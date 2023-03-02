@@ -11,4 +11,5 @@ package back;
 public class Nodo {
     Nodo hijoDerecho;
     Nodo hijoIzquierdo;
+    String personaje;
 }
