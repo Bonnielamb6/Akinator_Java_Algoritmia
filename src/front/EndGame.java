@@ -21,7 +21,7 @@ public class EndGame extends javax.swing.JPanel {
     public EndGame() {
         initComponents();
         
-        SetImageLabel(ImgAki,"src/img/Akinator.jpg");
+        SetImageLabel(ImgAki,"/imagenes/genio.jpg");
     }
 
     /**

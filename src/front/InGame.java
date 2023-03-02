@@ -21,7 +21,7 @@ public class InGame extends javax.swing.JPanel {
     public InGame() {
         initComponents();
         
-        SetImageLabel(ImgAki,"src/img/Akinator.jpg");
+        SetImageLabel(ImgAki,"/imagenes/genio.jpg");
     }
 
     /**
