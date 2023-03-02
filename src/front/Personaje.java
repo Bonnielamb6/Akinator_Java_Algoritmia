@@ -42,9 +42,9 @@ public class Personaje extends javax.swing.JPanel {
         setBackground(new java.awt.Color(6, 118, 243));
         setLayout(null);
 
-        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Akinator.jpg"))); // NOI18N
+        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(ImgAki);
-        ImgAki.setBounds(0, 60, 340, 330);
+        ImgAki.setBounds(10, 80, 340, 330);
 
         jButton2.setBackground(new java.awt.Color(91, 191, 255));
         jButton2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
