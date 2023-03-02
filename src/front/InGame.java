@@ -70,7 +70,7 @@ public class InGame extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(350, 110, 500, 50);
 
-        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Akinator.jpg"))); // NOI18N
+        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(ImgAki);
         ImgAki.setBounds(0, 60, 340, 330);
     }// </editor-fold>//GEN-END:initComponents

@@ -8,8 +8,8 @@ package back;
  *
  * @author PC
  */
-public class Nodo {
-    Nodo hijoDerecho;
-    Nodo hijoIzquierdo;
+public class NodoArbol {
+    NodoArbol hijoDerecho;
+    NodoArbol hijoIzquierdo;
     String personaje;
 }

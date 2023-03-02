@@ -46,7 +46,7 @@ public class MainQuest extends javax.swing.JPanel {
         setBackground(new java.awt.Color(6, 118, 243));
         setLayout(null);
 
-        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Akinator.jpg"))); // NOI18N
+        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(ImgAki);
         ImgAki.setBounds(0, 60, 340, 330);
 
