@@ -2,12 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Front;
+package front;
 
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import back.Arbol;
+import back.NodoArbol;
 
 /**
  *
@@ -18,10 +20,13 @@ public class InGame extends javax.swing.JPanel {
     /**
      * Creates new form InGame
      */
+    Arbol datos = new Arbol();
+    NodoArbol activo = datos.getRaiz();
     public InGame() {
         initComponents();
         
         SetImageLabel(ImgAki,"/imagenes/genio.jpg");
+        cambiarTexto();
     }
 
     /**
@@ -33,35 +38,36 @@ public class InGame extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSi = new javax.swing.JButton();
+        btnNo = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         ImgAki = new javax.swing.JLabel();
+        lblPregunta = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
         setLayout(null);
 
-        jButton3.setBackground(new java.awt.Color(91, 191, 255));
-        jButton3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton3.setText("Si");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSi.setBackground(new java.awt.Color(91, 191, 255));
+        btnSi.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnSi.setText("Si");
+        btnSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSiActionPerformed(evt);
             }
         });
-        add(jButton3);
-        jButton3.setBounds(440, 250, 110, 40);
+        add(btnSi);
+        btnSi.setBounds(440, 250, 110, 40);
 
-        jButton2.setBackground(new java.awt.Color(91, 191, 255));
-        jButton2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton2.setText("No");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnNo.setBackground(new java.awt.Color(91, 191, 255));
+        btnNo.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnNo.setText("No");
+        btnNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnNoActionPerformed(evt);
             }
         });
-        add(jButton2);
-        jButton2.setBounds(650, 250, 110, 40);
+        add(btnNo);
+        btnNo.setBounds(650, 250, 110, 40);
 
         jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,15 +79,36 @@ public class InGame extends javax.swing.JPanel {
         ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(ImgAki);
         ImgAki.setBounds(0, 60, 340, 330);
+        add(lblPregunta);
+        lblPregunta.setBounds(440, 180, 0, 0);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        if(activo.getHijoDerecho().getHijoIzquierdo()==null && activo.getHijoDerecho().getHijoDerecho()==null){
+            //mandar a la ventana de adivinado el personaje
+        }else{
+            activo = activo.avanzarDerecha(activo);
+            cambiarTexto();
+        }
+    }//GEN-LAST:event_btnSiActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        if(activo.getHijoIzquierdo().getHijoIzquierdo()==null && activo.getHijoIzquierdo().getHijoDerecho()==null){
+            //mandar a la ventana de adivinado el personaje
+        }else{
+            activo = activo.avanzarIzquierda(activo);
+            cambiarTexto();
+        }
+    }
+    
+    public void cambiarTexto(){
+        if(activo!=null){
+            lblPregunta.setText("Es: "+activo.getTexto());
+        }
+        
+    }//GEN-LAST:event_btnNoActionPerformed
 
     private void SetImageLabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
@@ -94,8 +121,9 @@ public class InGame extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ImgAki;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnNo;
+    private javax.swing.JButton btnSi;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblPregunta;
     // End of variables declaration//GEN-END:variables
 }
