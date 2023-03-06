@@ -10,6 +10,8 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -21,10 +23,17 @@ public class MainQuest extends javax.swing.JPanel {
      * Creates new form MainQuest
      */
     Arbol datos = new Arbol();
+    InGame panelJuego = new InGame();
+    
     public MainQuest() {
         initComponents();
         
         
+    }
+        public MainQuest(InGame panelJuego) {
+        initComponents();
+        
+        this.panelJuego = panelJuego;
     }
     
     public MainQuest(Arbol datos){
@@ -111,12 +120,20 @@ public class MainQuest extends javax.swing.JPanel {
   
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        NodoArbol personaje = new NodoArbol(txtPersonaje.getText());
-        NodoArbol raiz = new NodoArbol(txtDescripcion.getText(),personaje);
-        datos.insertarRaiz(raiz,personaje);
+        if(txtDescripcion.getText().isBlank()||txtPersonaje.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
+        }else{
+            NodoArbol personaje = new NodoArbol(txtPersonaje.getText());
+            NodoArbol raiz = new NodoArbol(txtDescripcion.getText(),personaje);
+            datos.insertarRaiz(raiz,personaje);
+            this.setVisible(false);
+            panelJuego.setVisible(true);
+        }
+        
         
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

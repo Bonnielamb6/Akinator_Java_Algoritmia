@@ -18,22 +18,24 @@ public class Akinator extends javax.swing.JFrame {
     /**
      * Creates new form Akinator
      */
-    Bienvenida p1= new Bienvenida();
-    InGame p2 = new InGame();
-    MainQuest p3 = new MainQuest();
+    Bienvenida panelBienvenida= new Bienvenida();
+    InGame panelJuego = new InGame();
+    MainQuest panelPreguntaInicial = new MainQuest(panelJuego);
+    EndGame panelGameOver = new EndGame ();
+    Personaje panelAdivinado = new Personaje();
+    
     Arbol datos = new Arbol();
     NodoArbol activo = datos.getRaiz();
     
     public Akinator() {
         initComponents();
-        mostrarPanel(p1);
+        mostrarPanel(panelBienvenida);
                 
     }
     
-    private void mostrarPanel(JPanel p){
+    public void mostrarPanel(JPanel p){
         p.setSize(860, 460);
         p.setLocation(0,0);
-        contenido.removeAll();
         contenido.add(p,BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
@@ -108,9 +110,21 @@ public class Akinator extends javax.swing.JFrame {
         Mostrar panel de juego
         */
         if(datos.getRaiz()==null){
-            mostrarPanel(p3);
+            mostrarPanel(panelPreguntaInicial);
+            mostrarPanel(panelJuego);
+            mostrarPanel(panelGameOver);
+            mostrarPanel(panelAdivinado);
+            
+            panelBienvenida.setVisible(false);
+            panelAdivinado.setVisible(false);
+            panelGameOver.setVisible(false);
+            panelJuego.setVisible(false);
         }else{
-            mostrarPanel(p2);
+            mostrarPanel(panelJuego);
+            panelPreguntaInicial.setVisible(false);
+            panelBienvenida.setVisible(false);
+            panelAdivinado.setVisible(false);
+            panelGameOver.setVisible(false);
         }
         
     }//GEN-LAST:event_btnJugarActionPerformed
