@@ -23,15 +23,15 @@ public class InGame extends javax.swing.JPanel {
     Arbol datos = new Arbol();
     NodoArbol activo = datos.getRaiz();
     
-    public InGame() {
-        initComponents();
-        
-        
-        cambiarTexto();
-    }
-    
+
     public InGame(Arbol datos){
+        initComponents();
         this.datos = datos;
+        activo = datos.getRaiz();
+        btnSi.setVisible(false);
+        btnNo.setVisible(false);
+        lblPersonaje.setVisible(false);
+        lblPersonaje.setVisible(false);
     }
 
     /**
@@ -45,9 +45,10 @@ public class InGame extends javax.swing.JPanel {
 
         btnSi = new javax.swing.JButton();
         btnNo = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblPersonaje = new javax.swing.JLabel();
         lblPregunta = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnComenzar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(6, 118, 243));
         setLayout(null);
@@ -74,18 +75,29 @@ public class InGame extends javax.swing.JPanel {
         add(btnNo);
         btnNo.setBounds(650, 250, 110, 40);
 
-        jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Tu personaje ");
-        add(jLabel3);
-        jLabel3.setBounds(350, 110, 500, 50);
+        lblPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        lblPersonaje.setForeground(new java.awt.Color(255, 255, 255));
+        lblPersonaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPersonaje.setText("Tu personaje ");
+        add(lblPersonaje);
+        lblPersonaje.setBounds(350, 110, 500, 50);
         add(lblPregunta);
         lblPregunta.setBounds(440, 180, 0, 0);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(jLabel2);
         jLabel2.setBounds(0, 80, 350, 300);
+
+        btnComenzar.setBackground(new java.awt.Color(91, 191, 255));
+        btnComenzar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnComenzar.setText("Comenzar");
+        btnComenzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComenzarActionPerformed(evt);
+            }
+        });
+        add(btnComenzar);
+        btnComenzar.setBounds(510, 180, 160, 50);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
@@ -108,6 +120,10 @@ public class InGame extends javax.swing.JPanel {
         }
     }
     
+    public void insertarPrimerTexto(){
+        
+    }
+    
     public void cambiarTexto(){
         if(activo!=null){
             lblPregunta.setText("Es: "+activo.getTexto());
@@ -115,12 +131,24 @@ public class InGame extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnNoActionPerformed
 
+    private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
+        // TODO add your handling code here:
+        lblPersonaje.setVisible(true);
+        lblPregunta.setVisible(true);
+        btnNo.setVisible(true);
+        btnSi.setVisible(true);
+        btnComenzar.setVisible(false);
+        activo = datos.getRaiz();
+        cambiarTexto();
+    }//GEN-LAST:event_btnComenzarActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnComenzar;
     private javax.swing.JButton btnNo;
     private javax.swing.JButton btnSi;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblPersonaje;
     private javax.swing.JLabel lblPregunta;
     // End of variables declaration//GEN-END:variables
 }

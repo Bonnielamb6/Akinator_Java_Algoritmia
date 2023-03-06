@@ -18,14 +18,14 @@ public class Akinator extends javax.swing.JFrame {
     /**
      * Creates new form Akinator
      */
+    Arbol datos = new Arbol();
+    NodoArbol activo = datos.getRaiz();
+    
     Bienvenida panelBienvenida= new Bienvenida();
-    InGame panelJuego = new InGame();
+    InGame panelJuego = new InGame(datos);
     MainQuest panelPreguntaInicial = new MainQuest(panelJuego);
     EndGame panelGameOver = new EndGame ();
     Personaje panelAdivinado = new Personaje();
-    
-    Arbol datos = new Arbol();
-    NodoArbol activo = datos.getRaiz();
     
     public Akinator() {
         initComponents();

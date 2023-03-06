@@ -23,7 +23,7 @@ public class MainQuest extends javax.swing.JPanel {
      * Creates new form MainQuest
      */
     Arbol datos = new Arbol();
-    InGame panelJuego = new InGame();
+    InGame panelJuego = new InGame(datos);
     
     public MainQuest() {
         initComponents();
@@ -127,6 +127,7 @@ public class MainQuest extends javax.swing.JPanel {
             NodoArbol raiz = new NodoArbol(txtDescripcion.getText(),personaje);
             datos.insertarRaiz(raiz,personaje);
             this.setVisible(false);
+            panelJuego.datos = datos;
             panelJuego.setVisible(true);
         }
         
