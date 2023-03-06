@@ -22,10 +22,11 @@ public class InGame extends javax.swing.JPanel {
      */
     Arbol datos = new Arbol();
     NodoArbol activo = datos.getRaiz();
+    
     public InGame() {
         initComponents();
         
-        SetImageLabel(ImgAki,"/imagenes/genio.jpg");
+        
         cambiarTexto();
     }
 
@@ -41,8 +42,8 @@ public class InGame extends javax.swing.JPanel {
         btnSi = new javax.swing.JButton();
         btnNo = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        ImgAki = new javax.swing.JLabel();
         lblPregunta = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
         setLayout(null);
@@ -75,12 +76,12 @@ public class InGame extends javax.swing.JPanel {
         jLabel3.setText("Tu personaje ");
         add(jLabel3);
         jLabel3.setBounds(350, 110, 500, 50);
-
-        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
-        add(ImgAki);
-        ImgAki.setBounds(0, 60, 340, 330);
         add(lblPregunta);
         lblPregunta.setBounds(440, 180, 0, 0);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
+        add(jLabel2);
+        jLabel2.setBounds(0, 80, 350, 300);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
@@ -110,19 +111,11 @@ public class InGame extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnNoActionPerformed
 
-    private void SetImageLabel(JLabel labelName, String root) {
-        ImageIcon image = new ImageIcon(root);
-        Icon icon = new ImageIcon (
-                image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT)
-        );
-        labelName.setIcon(icon);
-        this.repaint();
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ImgAki;
     private javax.swing.JButton btnNo;
     private javax.swing.JButton btnSi;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblPregunta;
     // End of variables declaration//GEN-END:variables

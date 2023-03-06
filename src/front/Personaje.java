@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Front;
+package front;
 
 import java.awt.Image;
 import javax.swing.Icon;
@@ -21,7 +21,7 @@ public class Personaje extends javax.swing.JPanel {
     public Personaje() {
         initComponents();
         
-        SetImageLabel(ImgAki,"src/img/Akinator.jpg");
+        
     }
 
     /**
@@ -33,18 +33,14 @@ public class Personaje extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImgAki = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
         setLayout(null);
-
-        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
-        add(ImgAki);
-        ImgAki.setBounds(0, 60, 340, 330);
 
         jButton2.setBackground(new java.awt.Color(91, 191, 255));
         jButton2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
@@ -76,6 +72,10 @@ public class Personaje extends javax.swing.JPanel {
         jLabel3.setBounds(350, 110, 500, 50);
         add(jLabel1);
         jLabel1.setBounds(480, 160, 240, 200);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
+        add(jLabel2);
+        jLabel2.setBounds(0, 80, 350, 300);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -86,20 +86,13 @@ public class Personaje extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void SetImageLabel(JLabel labelName, String root) {
-        ImageIcon image = new ImageIcon(root);
-        Icon icon = new ImageIcon (
-                image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT)
-        );
-        labelName.setIcon(icon);
-        this.repaint();
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ImgAki;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

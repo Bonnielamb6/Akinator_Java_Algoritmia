@@ -4,6 +4,7 @@
  */
 package front;
 
+import front.InGame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -16,9 +17,11 @@ public class Akinator extends javax.swing.JFrame {
     /**
      * Creates new form Akinator
      */
+     Bienvenida p1= new Bienvenida();
+     InGame p2 = new InGame();
+    
     public Akinator() {
         initComponents();
-        Bienvenida p1= new Bienvenida();
         mostrarPanel(p1);
                 
     }
@@ -100,6 +103,7 @@ public class Akinator extends javax.swing.JFrame {
         /*
         Mostrar panel de juego
         */
+        mostrarPanel(p2);
     }//GEN-LAST:event_btnJugarActionPerformed
 
     /**
