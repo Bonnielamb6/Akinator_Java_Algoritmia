@@ -11,7 +11,6 @@ package back;
 public class NodoArbol {
     NodoArbol hijoDerecho;
     NodoArbol hijoIzquierdo;
-    String personaje;
     String texto;
     int profundidad;
     
