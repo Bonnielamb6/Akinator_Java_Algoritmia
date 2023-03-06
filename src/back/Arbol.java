@@ -164,11 +164,9 @@ public class Arbol {
         }    
     }
     
-    public void insertarRaiz (String t){
-        NodoArbol nuevo = new NodoArbol(t);
-        if(raiz==null){
-            raiz = nuevo;
-        }
+    public void insertarRaiz (NodoArbol raiz, NodoArbol hijoDerecho){
+        this.raiz = raiz;
+        raiz.hijoDerecho = hijoDerecho;
     }
     
     public NodoArbol getRaiz(){

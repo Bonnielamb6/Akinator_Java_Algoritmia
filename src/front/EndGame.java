@@ -4,6 +4,8 @@
  */
 package front;
 
+import back.Arbol;
+import back.NodoArbol;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -18,10 +20,16 @@ public class EndGame extends javax.swing.JPanel {
     /**
      * Creates new form EndGame
      */
+    Arbol datos = new Arbol();
+    
     public EndGame() {
         initComponents();
         
         
+    }
+    
+    public EndGame(Arbol datos){
+        this.datos = datos;
     }
 
     /**
@@ -35,11 +43,11 @@ public class EndGame extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtPersonaje = new javax.swing.JTextField();
+        btnAgregarImagen = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -57,42 +65,42 @@ public class EndGame extends javax.swing.JPanel {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(10, 120, 500, 50);
 
-        jTextField1.setBackground(new java.awt.Color(91, 191, 255));
-        jTextField1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(10, 170, 500, 50);
+        txtDescripcion.setBackground(new java.awt.Color(91, 191, 255));
+        txtDescripcion.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        jPanel1.add(txtDescripcion);
+        txtDescripcion.setBounds(10, 170, 500, 50);
 
         jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jLabel2);
         jLabel2.setBounds(190, 250, 310, 50);
 
-        jTextField2.setBackground(new java.awt.Color(91, 191, 255));
-        jTextField2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtPersonaje.setBackground(new java.awt.Color(91, 191, 255));
+        txtPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        jPanel1.add(txtPersonaje);
+        txtPersonaje.setBounds(10, 60, 500, 50);
+
+        btnAgregarImagen.setBackground(new java.awt.Color(91, 191, 255));
+        btnAgregarImagen.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnAgregarImagen.setText("Añadir Imagen");
+        btnAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                btnAgregarImagenActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(10, 60, 500, 50);
+        jPanel1.add(btnAgregarImagen);
+        btnAgregarImagen.setBounds(10, 250, 170, 50);
 
-        jButton1.setBackground(new java.awt.Color(91, 191, 255));
-        jButton1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton1.setText("Añadir Imagen");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(10, 250, 170, 50);
-
-        jButton2.setBackground(new java.awt.Color(91, 191, 255));
-        jButton2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton2.setText("Aceptar");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(210, 380, 110, 40);
+        btnAceptar.setBackground(new java.awt.Color(91, 191, 255));
+        btnAceptar.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAceptar);
+        btnAceptar.setBounds(210, 380, 110, 40);
 
         jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,24 +116,25 @@ public class EndGame extends javax.swing.JPanel {
         jLabel4.setBounds(0, 80, 350, 300);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_btnAgregarImagenActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAgregarImagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtPersonaje;
     // End of variables declaration//GEN-END:variables
 }

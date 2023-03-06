@@ -4,7 +4,8 @@
  */
 package front;
 
-import front.InGame;
+import back.NodoArbol;
+import back.Arbol;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -17,8 +18,11 @@ public class Akinator extends javax.swing.JFrame {
     /**
      * Creates new form Akinator
      */
-     Bienvenida p1= new Bienvenida();
-     InGame p2 = new InGame();
+    Bienvenida p1= new Bienvenida();
+    InGame p2 = new InGame();
+    MainQuest p3 = new MainQuest();
+    Arbol datos = new Arbol();
+    NodoArbol activo = datos.getRaiz();
     
     public Akinator() {
         initComponents();
@@ -103,7 +107,12 @@ public class Akinator extends javax.swing.JFrame {
         /*
         Mostrar panel de juego
         */
-        mostrarPanel(p2);
+        if(datos.getRaiz()==null){
+            mostrarPanel(p3);
+        }else{
+            mostrarPanel(p2);
+        }
+        
     }//GEN-LAST:event_btnJugarActionPerformed
 
     /**

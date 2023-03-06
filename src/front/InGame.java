@@ -29,6 +29,10 @@ public class InGame extends javax.swing.JPanel {
         
         cambiarTexto();
     }
+    
+    public InGame(Arbol datos){
+        this.datos = datos;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
