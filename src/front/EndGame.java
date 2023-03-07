@@ -10,6 +10,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,15 +22,14 @@ public class EndGame extends javax.swing.JPanel {
      * Creates new form EndGame
      */
     Arbol datos = new Arbol();
+    NodoArbol activo = new NodoArbol();
+   
     
-    public EndGame() {
+    public EndGame(Arbol datos, NodoArbol activo){
         initComponents();
-        
-        
-    }
-    
-    public EndGame(Arbol datos){
         this.datos = datos;
+        this.activo = activo;
+        this.setVisible(true);
     }
 
     /**
@@ -118,7 +118,12 @@ public class EndGame extends javax.swing.JPanel {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-
+        if(txtDescripcion.getText().isBlank() ||txtPersonaje.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
+        }else{
+            datos.insertarNuevoPersonaje(txtDescripcion.getText(), txtPersonaje.getText(), activo);
+        }
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed

@@ -109,9 +109,10 @@ public class Akinator extends javax.swing.JFrame {
         /*
         Mostrar panel de juego
         */
-        Personaje panelAdivinado = new Personaje(activo);
-        EndGame panelGameOver = new EndGame ();
-        InGame panelJuego = new InGame(datos,panelAdivinado);
+        EndGame panelGameOver = new EndGame (datos,activo);
+        Personaje panelAdivinado = new Personaje(activo,panelGameOver);
+        
+        InGame panelJuego = new InGame(datos,panelAdivinado,panelGameOver);
         
         mostrarPanel(panelJuego);
         
@@ -129,10 +130,12 @@ public class Akinator extends javax.swing.JFrame {
         panelAdivinado.setVisible(false);
         panelGameOver.setVisible(false);
         panelJuego.setVisible(false);
-    
-        
+        btnJugar.setVisible(false);
     }//GEN-LAST:event_btnJugarActionPerformed
 
+    public void reiniciarPartida(){
+        
+    }
     /**
      * @param args the command line arguments
      */

@@ -22,9 +22,10 @@ public class InGame extends javax.swing.JPanel {
      */
     Arbol datos = new Arbol();
     NodoArbol activo = datos.getRaiz();
-    Personaje panelAdivinado = new Personaje(activo);
+    EndGame panelGameOver = new EndGame(datos, activo);
+    Personaje panelAdivinado = new Personaje(activo, panelGameOver);
 
-    public InGame(Arbol datos,Personaje panelAdivinado){
+    public InGame(Arbol datos,Personaje panelAdivinado, EndGame panelGameOver){
         initComponents();
         this.datos = datos;
         activo = datos.getRaiz();
@@ -33,6 +34,7 @@ public class InGame extends javax.swing.JPanel {
         lblPersonaje.setVisible(false);
         lblPersonaje.setVisible(false);
         this.panelAdivinado = panelAdivinado;
+        this.panelGameOver = panelGameOver;
     }
 
     /**

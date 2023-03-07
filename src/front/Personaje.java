@@ -5,6 +5,7 @@
 package front;
 
 
+import back.Arbol;
 import back.NodoArbol;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -20,14 +21,14 @@ public class Personaje extends javax.swing.JPanel {
     /**
      * Creates new form Personaje
      */
+    Arbol datos = new Arbol();
     NodoArbol nodo = new NodoArbol();
-    public Personaje(NodoArbol nodo) {
+    EndGame panelGameOver = new EndGame(datos, nodo);
+    public Personaje(NodoArbol nodo, EndGame panelGameOver) {
         initComponents();
         this.nodo = nodo;
-        if(nodo!=null){
-            lblPersonaje.setText("Tu personaje es: "+nodo.getTexto());
-        }
-        
+        this.panelGameOver = panelGameOver;
+        btnVolverAJugar.setVisible(false);
     }
 
     /**
@@ -44,6 +45,7 @@ public class Personaje extends javax.swing.JPanel {
         lblPersonaje = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnVolverAJugar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(6, 118, 243));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -87,14 +89,32 @@ public class Personaje extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(jLabel2);
         jLabel2.setBounds(0, 80, 350, 300);
+
+        btnVolverAJugar.setBackground(new java.awt.Color(91, 191, 255));
+        btnVolverAJugar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnVolverAJugar.setText("Volver a jugar");
+        btnVolverAJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverAJugarActionPerformed(evt);
+            }
+        });
+        add(btnVolverAJugar);
+        btnVolverAJugar.setBounds(480, 380, 200, 60);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        panelGameOver.activo = nodo;
+        panelGameOver.setVisible(true);
     }//GEN-LAST:event_btnNoActionPerformed
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
+        btnNo.setVisible(false);
+        btnSi.setVisible(false);
+        lblPersonaje.setText("SOY BUENISIMO LA PTM, QUIERES VOLVER A JUGAR??");
+        btnVolverAJugar.setVisible(true);
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -102,11 +122,17 @@ public class Personaje extends javax.swing.JPanel {
         lblPersonaje.setText("Tu personaje es: "+nodo.getTexto());
     }//GEN-LAST:event_formComponentShown
 
+    private void btnVolverAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAJugarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnVolverAJugarActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNo;
     private javax.swing.JButton btnSi;
+    private javax.swing.JButton btnVolverAJugar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblPersonaje;
