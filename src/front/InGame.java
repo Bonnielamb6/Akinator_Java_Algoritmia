@@ -22,9 +22,13 @@ public class InGame extends javax.swing.JPanel {
      */
     Arbol datos = new Arbol();
     NodoArbol activo = datos.getRaiz();
-    EndGame panelGameOver = new EndGame(datos, activo);
-    Personaje panelAdivinado = new Personaje(activo, panelGameOver);
+    EndGame panelGameOver;
+    Personaje panelAdivinado;
 
+    public InGame(){
+        initComponents();
+    }
+    
     public InGame(Arbol datos,Personaje panelAdivinado, EndGame panelGameOver){
         initComponents();
         this.datos = datos;
@@ -54,6 +58,11 @@ public class InGame extends javax.swing.JPanel {
         btnComenzar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(6, 118, 243));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         setLayout(null);
 
         btnSi.setBackground(new java.awt.Color(91, 191, 255));
@@ -109,7 +118,7 @@ public class InGame extends javax.swing.JPanel {
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
-        if(activo.getHijoIzquierdo()==null){
+        if(activo.getHijoDerecho()==null){
             //mandar a la ventana de adivinado el personaje
         }else{
             activo = activo.avanzarDerecha(activo);
@@ -141,20 +150,44 @@ public class InGame extends javax.swing.JPanel {
 
     private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
         // TODO add your handling code here:
+        comenzar();
+        if(activo.getHijoIzquierdo()==null && activo.getHijoDerecho()==null){
+            this.setVisible(false);
+            
+            panelAdivinado.nodo = activo;
+            panelAdivinado.setVisible(true);
+            this.finalizar();
+        }else{
+            cambiarTexto();
+        }
+        
+        
+    }//GEN-LAST:event_btnComenzarActionPerformed
+
+    private void comenzar(){
         lblPersonaje.setVisible(true);
         lblPregunta.setVisible(true);
         btnNo.setVisible(true);
         btnSi.setVisible(true);
         btnComenzar.setVisible(false);
         activo = datos.getRaiz();
-        if(activo.getHijoIzquierdo()==null && activo.getHijoDerecho()==null){
-            this.setVisible(false);
-            this.remove(this);
-            panelAdivinado.nodo = activo;
-            panelAdivinado.setVisible(true);
-        }
-        cambiarTexto();
-    }//GEN-LAST:event_btnComenzarActionPerformed
+    }
+    
+    private void finalizar(){
+        lblPersonaje.setVisible(false);
+        lblPregunta.setVisible(false);
+        btnNo.setVisible(false);
+        btnSi.setVisible(false);
+        btnComenzar.setVisible(true);
+        activo = datos.getRaiz();
+        lblPersonaje.setText("");
+        lblPersonaje.setVisible(false);
+    }
+    
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_formComponentShown
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

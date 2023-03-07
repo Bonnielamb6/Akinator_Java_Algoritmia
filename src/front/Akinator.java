@@ -110,13 +110,29 @@ public class Akinator extends javax.swing.JFrame {
         Mostrar panel de juego
         */
         EndGame panelGameOver = new EndGame (datos,activo);
-        Personaje panelAdivinado = new Personaje(activo,panelGameOver);
         
-        InGame panelJuego = new InGame(datos,panelAdivinado,panelGameOver);
+        Personaje panelPersonaje = new Personaje(activo,panelGameOver);
+        
+        InGame panelJuego = new InGame(datos,panelPersonaje,panelGameOver);
+        
+        Personaje panelAdivinado = new Personaje(activo,panelGameOver,panelJuego);
+        panelAdivinado = panelPersonaje;
+        panelAdivinado.panelJuego = panelJuego;
+        MainQuest panelPreguntaInicial = new MainQuest(datos,panelJuego);
+        
+        
+        
+        
+//        InGame panelJuego = new InGame(datos,panelPersonaje,panelGameOver);
+//        Personaje panelPersonaje = new Personaje(activo,panelGameOver,panelJuego);
+        
+        
+        
+        
         
         mostrarPanel(panelJuego);
         
-        MainQuest panelPreguntaInicial = new MainQuest(datos,panelJuego);
+        
         mostrarPanel(panelPreguntaInicial);
 
 

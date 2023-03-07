@@ -24,11 +24,29 @@ public class Personaje extends javax.swing.JPanel {
     Arbol datos = new Arbol();
     NodoArbol nodo = new NodoArbol();
     EndGame panelGameOver = new EndGame(datos, nodo);
-    public Personaje(NodoArbol nodo, EndGame panelGameOver) {
+    InGame panelJuego;
+    
+//    public Personaje(NodoArbol nodo, EndGame panelGameOver) {
+//        initComponents();
+//        this.nodo = nodo;
+//        this.panelGameOver = panelGameOver;
+//        btnVolverAJugar.setVisible(false);
+//    }
+    
+    public Personaje(NodoArbol nodo, EndGame panelGameOver){
         initComponents();
         this.nodo = nodo;
         this.panelGameOver = panelGameOver;
         btnVolverAJugar.setVisible(false);
+
+    }
+    
+    public Personaje(NodoArbol nodo, EndGame panelGameOver,InGame panelJuego) {
+        initComponents();
+        this.nodo = nodo;
+        this.panelGameOver = panelGameOver;
+        btnVolverAJugar.setVisible(false);
+        this.panelJuego = panelJuego;
     }
 
     /**
@@ -116,6 +134,7 @@ public class Personaje extends javax.swing.JPanel {
         btnSi.setVisible(false);
         lblPersonaje.setText("SOY BUENISIMO LA PTM, QUIERES VOLVER A JUGAR??");
         btnVolverAJugar.setVisible(true);
+        
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -126,7 +145,12 @@ public class Personaje extends javax.swing.JPanel {
     private void btnVolverAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAJugarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        this.remove(this);
+        panelJuego.setVisible(true);
+        panelJuego.datos = datos;
+        panelJuego.activo = datos.getRaiz();
+        panelJuego.setVisible(true);
+        
+        
     }//GEN-LAST:event_btnVolverAJugarActionPerformed
 
    

@@ -24,8 +24,8 @@ public class MainQuest extends javax.swing.JPanel {
      */
     Arbol datos = new Arbol();
     EndGame panelGameOver = new EndGame(datos, datos.getRaiz());
-    Personaje panelAdivinado = new Personaje(datos.getRaiz(),panelGameOver);
-    InGame panelJuego = new InGame(datos,panelAdivinado,panelGameOver);
+    Personaje panelAdivinado;
+    InGame panelJuego;
     
     public MainQuest() {
         initComponents();
