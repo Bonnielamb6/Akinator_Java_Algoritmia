@@ -23,7 +23,8 @@ public class MainQuest extends javax.swing.JPanel {
      * Creates new form MainQuest
      */
     Arbol datos = new Arbol();
-    InGame panelJuego = new InGame(datos);
+    Personaje panelAdivinado = new Personaje(datos.getRaiz());
+    InGame panelJuego = new InGame(datos,panelAdivinado);
     
     public MainQuest() {
         initComponents();

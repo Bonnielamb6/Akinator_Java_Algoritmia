@@ -14,6 +14,13 @@ public class NodoArbol {
     String texto;
     int profundidad;
     
+    public NodoArbol(){
+        this.texto = "";
+        this.profundidad=0;
+        this.hijoIzquierdo = null;
+        this.hijoDerecho = null;
+    }
+    
     public NodoArbol(String texto){
         this.texto = texto;
         this.profundidad=0;

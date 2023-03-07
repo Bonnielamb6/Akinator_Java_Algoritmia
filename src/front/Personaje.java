@@ -4,6 +4,8 @@
  */
 package front;
 
+
+import back.NodoArbol;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -18,9 +20,13 @@ public class Personaje extends javax.swing.JPanel {
     /**
      * Creates new form Personaje
      */
-    public Personaje() {
+    NodoArbol nodo = new NodoArbol();
+    public Personaje(NodoArbol nodo) {
         initComponents();
-        
+        this.nodo = nodo;
+        if(nodo!=null){
+            lblPersonaje.setText("Tu personaje es: "+nodo.getTexto());
+        }
         
     }
 
@@ -33,43 +39,48 @@ public class Personaje extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        btnNo = new javax.swing.JButton();
+        btnSi = new javax.swing.JButton();
+        lblPersonaje = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         setLayout(null);
 
-        jButton2.setBackground(new java.awt.Color(91, 191, 255));
-        jButton2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton2.setText("No");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnNo.setBackground(new java.awt.Color(91, 191, 255));
+        btnNo.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnNo.setText("No");
+        btnNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnNoActionPerformed(evt);
             }
         });
-        add(jButton2);
-        jButton2.setBounds(660, 390, 110, 40);
+        add(btnNo);
+        btnNo.setBounds(660, 390, 110, 40);
 
-        jButton3.setBackground(new java.awt.Color(91, 191, 255));
-        jButton3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton3.setText("Si");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSi.setBackground(new java.awt.Color(91, 191, 255));
+        btnSi.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnSi.setText("Si");
+        btnSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSiActionPerformed(evt);
             }
         });
-        add(jButton3);
-        jButton3.setBounds(410, 390, 110, 40);
+        add(btnSi);
+        btnSi.setBounds(410, 390, 110, 40);
 
-        jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Tu personaje es:");
-        add(jLabel3);
-        jLabel3.setBounds(350, 110, 500, 50);
+        lblPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        lblPersonaje.setForeground(new java.awt.Color(255, 255, 255));
+        lblPersonaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPersonaje.setText("Tu personaje es:");
+        add(lblPersonaje);
+        lblPersonaje.setBounds(350, 110, 500, 50);
         add(jLabel1);
         jLabel1.setBounds(480, 160, 240, 200);
 
@@ -78,21 +89,26 @@ public class Personaje extends javax.swing.JPanel {
         jLabel2.setBounds(0, 80, 350, 300);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnNoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnSiActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        lblPersonaje.setText("Tu personaje es: "+nodo.getTexto());
+    }//GEN-LAST:event_formComponentShown
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnNo;
+    private javax.swing.JButton btnSi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblPersonaje;
     // End of variables declaration//GEN-END:variables
 }

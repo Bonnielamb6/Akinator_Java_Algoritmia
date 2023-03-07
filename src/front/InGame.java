@@ -22,9 +22,9 @@ public class InGame extends javax.swing.JPanel {
      */
     Arbol datos = new Arbol();
     NodoArbol activo = datos.getRaiz();
-    
+    Personaje panelAdivinado = new Personaje(activo);
 
-    public InGame(Arbol datos){
+    public InGame(Arbol datos,Personaje panelAdivinado){
         initComponents();
         this.datos = datos;
         activo = datos.getRaiz();
@@ -32,6 +32,7 @@ public class InGame extends javax.swing.JPanel {
         btnNo.setVisible(false);
         lblPersonaje.setVisible(false);
         lblPersonaje.setVisible(false);
+        this.panelAdivinado = panelAdivinado;
     }
 
     /**
@@ -106,7 +107,7 @@ public class InGame extends javax.swing.JPanel {
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
-        if(activo.getHijoDerecho().getHijoIzquierdo()==null && activo.getHijoDerecho().getHijoDerecho()==null){
+        if(activo.getHijoIzquierdo()==null){
             //mandar a la ventana de adivinado el personaje
         }else{
             activo = activo.avanzarDerecha(activo);
@@ -116,7 +117,7 @@ public class InGame extends javax.swing.JPanel {
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
-        if(activo.getHijoIzquierdo().getHijoIzquierdo()==null && activo.getHijoIzquierdo().getHijoDerecho()==null){
+        if(activo.getHijoIzquierdo()==null){
             //mandar a la ventana de adivinado el personaje
         }else{
             activo = activo.avanzarIzquierda(activo);
@@ -144,6 +145,11 @@ public class InGame extends javax.swing.JPanel {
         btnSi.setVisible(true);
         btnComenzar.setVisible(false);
         activo = datos.getRaiz();
+        if(activo.getHijoIzquierdo()==null && activo.getHijoDerecho()==null){
+            this.setVisible(false);
+            panelAdivinado.nodo = activo;
+            panelAdivinado.setVisible(true);
+        }
         cambiarTexto();
     }//GEN-LAST:event_btnComenzarActionPerformed
 
