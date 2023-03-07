@@ -33,20 +33,21 @@ public class Personaje extends javax.swing.JPanel {
 //        btnVolverAJugar.setVisible(false);
 //    }
     
-    public Personaje(NodoArbol nodo, EndGame panelGameOver){
+    public Personaje(Arbol datos,NodoArbol nodo, EndGame panelGameOver){
         initComponents();
         this.nodo = nodo;
         this.panelGameOver = panelGameOver;
         btnVolverAJugar.setVisible(false);
-
+        this.datos=datos;
     }
     
-    public Personaje(NodoArbol nodo, EndGame panelGameOver,InGame panelJuego) {
+    public Personaje(Arbol datos,NodoArbol nodo, EndGame panelGameOver,InGame panelJuego) {
         initComponents();
         this.nodo = nodo;
         this.panelGameOver = panelGameOver;
         btnVolverAJugar.setVisible(false);
         this.panelJuego = panelJuego;
+        this.datos = datos;
     }
 
     /**
@@ -150,7 +151,9 @@ public class Personaje extends javax.swing.JPanel {
         panelJuego.activo = datos.getRaiz();
         panelJuego.setVisible(true);
         
-        
+        btnNo.setVisible(true);
+        btnSi.setVisible(true);
+        btnVolverAJugar.setVisible(false);
     }//GEN-LAST:event_btnVolverAJugarActionPerformed
 
    

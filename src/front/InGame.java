@@ -186,7 +186,7 @@ public class InGame extends javax.swing.JPanel {
     
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-       
+       activo = datos.getRaiz();
     }//GEN-LAST:event_formComponentShown
 
     
