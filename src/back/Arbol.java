@@ -56,103 +56,16 @@ public class Arbol {
         return temporal;
     }
     
-    public NodoArbol insertarNodoIzquierda(NodoArbol nuevo, NodoArbol activo){
-        
-        NodoArbol nuevoPadre = activo;
-        if(activo.hijoIzquierdo==null){
-            activo.hijoIzquierdo = nuevo;
-        }else{
-            NodoArbol temporal = activo.hijoIzquierdo;
-            activo.hijoIzquierdo = nuevo;
-            nuevo.hijoIzquierdo = temporal;
-            if(obtenerProfundidad(activo.hijoIzquierdo)-obtenerProfundidad(activo.hijoDerecho)==2){
-                if(activo.hijoIzquierdo==null){
-                    nuevoPadre = rotacionIzquierda(activo);
-                }else{
-                    nuevoPadre = rotacionDobleIzquierda(activo);
-                }
-            }
-        }
-        if(activo.hijoIzquierdo==null && activo.hijoDerecho!= null){
-            activo.profundidad = activo.hijoDerecho.profundidad+1;
-        }else if(activo.hijoDerecho==null && activo.hijoIzquierdo!=null){
-            activo.profundidad = activo.hijoIzquierdo.profundidad+1;
-        }else {
-            activo.profundidad = Math.max(obtenerProfundidad(activo.hijoIzquierdo), obtenerProfundidad(activo.hijoDerecho)+1);
-        }
-        return nuevoPadre;
+    public void insertarNuevoPersonaje(String caracteristica, String personaje,NodoArbol activo){
+        String personajeActual = (String) activo.getTexto();
+        NodoArbol nodoIzq = new NodoArbol(personajeActual); // Personaje actual
+        NodoArbol nodoDer = new NodoArbol(personaje); // Nuevo Personaje
+        activo.setTexto(caracteristica); // Caracteristica del personaje
+
+        activo.setHijoIzquierdo(nodoDer);
+        activo.setHijoDerecho(nodoIzq);
     }
     
-    public NodoArbol insertarNodoDerecha(NodoArbol nuevo, NodoArbol activo){
-        NodoArbol nuevoPadre = activo;
-        if(activo.hijoDerecho==null){
-            activo.hijoDerecho = nuevo;
-        }else{
-           NodoArbol temporal = activo.hijoDerecho;
-            activo.hijoDerecho = nuevo;
-            nuevo.hijoDerecho = temporal;
-            if(obtenerProfundidad(activo.hijoIzquierdo)-obtenerProfundidad(activo.hijoDerecho)==2){
-                if(activo.hijoDerecho==null){
-                    nuevoPadre = rotacionIzquierda(activo);
-                }else{
-                    nuevoPadre = rotacionDobleIzquierda(activo);
-                }
-            }
-        }
-        if(activo.hijoIzquierdo==null && activo.hijoDerecho!= null){
-            activo.profundidad = activo.hijoDerecho.profundidad+1;
-        }else if(activo.hijoDerecho==null && activo.hijoIzquierdo!=null){
-            activo.profundidad = activo.hijoIzquierdo.profundidad+1;
-        }else {
-            activo.profundidad = Math.max(obtenerProfundidad(activo.hijoIzquierdo), obtenerProfundidad(activo.hijoDerecho)+1);
-        }
-        return nuevoPadre;
-    }
-    
-    /*
-    public NodoArbol insertarAvl(NodoArbol nuevo, NodoArbol subArbol){
-        NodoArbol nuevoPadre = subArbol;
-        if(nuevo.texto<subArbol.texto){
-            if(subArbol.hijoIzquierdo==null){
-                subArbol.hijoIzquierdo = nuevo;
-            }else{
-                subArbol.hijoIzquierdo = insertarAvl(nuevo, subArbol.hijoIzquierdo);
-                if(obtenerProfundidad(subArbol.hijoIzquierdo)-obtenerProfundidad(subArbol.hijoDerecho)==2){
-                    if(nuevo.texto<subArbol.hijoIzquierdo.texto){
-                        
-                        nuevoPadre = rotacionIzquierda(subArbol);
-                    }else{
-                        nuevoPadre = rotacionDobleIzquierda(subArbol);
-                    }
-                }
-            }
-            
-        }else if(nuevo.texto>subArbol.texto){
-            if(subArbol.hijoDerecho==null){
-                subArbol.hijoDerecho = nuevo;
-            }else{
-                subArbol.hijoDerecho = insertarAvl(nuevo, subArbol.hijoDerecho)
-                if(obtenerProfundidad(subArbol.hijoDerecho)-obtenerProfundidad(subArbol.hijoIzquierdo)==2){
-                    if(nuevo.texto>subArbol.hijoDerecho.texto){
-                        nuevoPadre = rotacionDerecha(subArbol);
-                    }else{
-                        nuevoPadre = rotacionDobleDerecha(subArbol);
-                    }
-                }
-            }
-            
-        }
-        
-        if(subArbol.hijoIzquierdo==null && subArbol.hijoDerecho!= null){
-            subArbol.profundidad = subArbol.hijoDerecho.profundidad+1;
-        }else if(subArbol.hijoDerecho==null && subArbol.hijoIzquierdo!=null){
-            subArbol.profundidad = subArbol.hijoIzquierdo.profundidad+1;
-        }else {
-            subArbol.profundidad = Math.max(obtenerProfundidad(subArbol.hijoIzquierdo), obtenerProfundidad(subArbol.hijoDerecho)+1);
-        }
-        return nuevoPadre;
-    }
-    */
     
     public void calcularProfundidad(NodoArbol nuevo, NodoArbol subArbol){
         if(subArbol.hijoIzquierdo==null && subArbol.hijoDerecho!= null){
@@ -163,10 +76,9 @@ public class Arbol {
             subArbol.profundidad = Math.max(obtenerProfundidad(subArbol.hijoIzquierdo), obtenerProfundidad(subArbol.hijoDerecho)+1);
         }    
     }
-    
-    public void insertarRaiz (NodoArbol raiz, NodoArbol hijoDerecho){
+
+    public void setRaiz(NodoArbol raiz) {
         this.raiz = raiz;
-        raiz.hijoDerecho = hijoDerecho;
     }
     
     public NodoArbol getRaiz(){

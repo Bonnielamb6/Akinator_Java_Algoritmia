@@ -81,8 +81,12 @@ public class InGame extends javax.swing.JPanel {
         lblPersonaje.setText("Tu personaje ");
         add(lblPersonaje);
         lblPersonaje.setBounds(350, 110, 500, 50);
+
+        lblPregunta.setMaximumSize(new java.awt.Dimension(100, 100));
+        lblPregunta.setMinimumSize(new java.awt.Dimension(100, 100));
+        lblPregunta.setPreferredSize(new java.awt.Dimension(100, 100));
         add(lblPregunta);
-        lblPregunta.setBounds(440, 180, 0, 0);
+        lblPregunta.setBounds(440, 180, 100, 100);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(jLabel2);
@@ -127,6 +131,7 @@ public class InGame extends javax.swing.JPanel {
     public void cambiarTexto(){
         if(activo!=null){
             lblPregunta.setText("Es: "+activo.getTexto());
+            lblPregunta.setVisible(true);
         }
         
     }//GEN-LAST:event_btnNoActionPerformed

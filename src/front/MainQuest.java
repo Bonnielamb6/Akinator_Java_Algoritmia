@@ -36,8 +36,10 @@ public class MainQuest extends javax.swing.JPanel {
         this.panelJuego = panelJuego;
     }
     
-    public MainQuest(Arbol datos){
+    public MainQuest(Arbol datos,InGame panelJuego){
+        initComponents();
         this.datos = datos;
+        this.panelJuego = panelJuego;
     }
 
     /**
@@ -50,8 +52,6 @@ public class MainQuest extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtDescripcion = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtPersonaje = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -65,18 +65,6 @@ public class MainQuest extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(11, 18, 98));
         jPanel2.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Descripcion del personaje:");
-        jLabel1.setToolTipText("");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 120, 500, 50);
-
-        txtDescripcion.setBackground(new java.awt.Color(91, 191, 255));
-        txtDescripcion.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jPanel2.add(txtDescripcion);
-        txtDescripcion.setBounds(10, 170, 500, 50);
-
         jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jLabel2);
@@ -85,13 +73,13 @@ public class MainQuest extends javax.swing.JPanel {
         txtPersonaje.setBackground(new java.awt.Color(91, 191, 255));
         txtPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jPanel2.add(txtPersonaje);
-        txtPersonaje.setBounds(10, 60, 500, 50);
+        txtPersonaje.setBounds(10, 150, 500, 50);
 
         jButton1.setBackground(new java.awt.Color(91, 191, 255));
         jButton1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jButton1.setText("Añadir Imagen");
         jPanel2.add(jButton1);
-        jButton1.setBounds(10, 250, 170, 50);
+        jButton1.setBounds(180, 240, 170, 50);
 
         btnAceptar.setBackground(new java.awt.Color(91, 191, 255));
         btnAceptar.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
@@ -108,7 +96,7 @@ public class MainQuest extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("En quien estas pensando?");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(8, 5, 500, 50);
+        jLabel3.setBounds(140, 70, 240, 50);
 
         add(jPanel2);
         jPanel2.setBounds(340, 10, 520, 440);
@@ -120,12 +108,11 @@ public class MainQuest extends javax.swing.JPanel {
   
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        if(txtDescripcion.getText().isBlank()||txtPersonaje.getText().isBlank()){
+        if(txtPersonaje.getText().isBlank()){
             JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
         }else{
-            NodoArbol personaje = new NodoArbol(txtPersonaje.getText());
-            NodoArbol raiz = new NodoArbol(txtDescripcion.getText(),personaje);
-            datos.insertarRaiz(raiz,personaje);
+            NodoArbol raiz = new NodoArbol(txtPersonaje.getText());
+            datos.setRaiz(raiz);
             this.setVisible(false);
             panelJuego.datos = datos;
             panelJuego.setVisible(true);
@@ -139,12 +126,10 @@ public class MainQuest extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtPersonaje;
     // End of variables declaration//GEN-END:variables
 }

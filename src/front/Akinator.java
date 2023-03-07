@@ -22,8 +22,8 @@ public class Akinator extends javax.swing.JFrame {
     NodoArbol activo = datos.getRaiz();
     
     Bienvenida panelBienvenida= new Bienvenida();
-    InGame panelJuego = new InGame(datos);
-    MainQuest panelPreguntaInicial = new MainQuest(panelJuego);
+    
+    
     EndGame panelGameOver = new EndGame ();
     Personaje panelAdivinado = new Personaje();
     
@@ -109,23 +109,21 @@ public class Akinator extends javax.swing.JFrame {
         /*
         Mostrar panel de juego
         */
-        if(datos.getRaiz()==null){
-            mostrarPanel(panelPreguntaInicial);
-            mostrarPanel(panelJuego);
-            mostrarPanel(panelGameOver);
-            mostrarPanel(panelAdivinado);
-            
-            panelBienvenida.setVisible(false);
-            panelAdivinado.setVisible(false);
-            panelGameOver.setVisible(false);
-            panelJuego.setVisible(false);
-        }else{
-            mostrarPanel(panelJuego);
-            panelPreguntaInicial.setVisible(false);
-            panelBienvenida.setVisible(false);
-            panelAdivinado.setVisible(false);
-            panelGameOver.setVisible(false);
-        }
+        InGame panelJuego = new InGame(datos);
+        mostrarPanel(panelJuego);
+        MainQuest panelPreguntaInicial = new MainQuest(datos,panelJuego);
+        mostrarPanel(panelPreguntaInicial);
+
+
+
+        mostrarPanel(panelGameOver);
+        mostrarPanel(panelAdivinado);
+
+        panelBienvenida.setVisible(false);
+        panelAdivinado.setVisible(false);
+        panelGameOver.setVisible(false);
+        panelJuego.setVisible(false);
+    
         
     }//GEN-LAST:event_btnJugarActionPerformed
 
