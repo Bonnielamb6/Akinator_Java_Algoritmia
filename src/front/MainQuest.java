@@ -116,6 +116,7 @@ public class MainQuest extends javax.swing.JPanel {
             NodoArbol raiz = new NodoArbol(txtPersonaje.getText());
             datos.setRaiz(raiz);
             this.setVisible(false);
+            this.remove(this);
             panelJuego.datos = datos;
             panelJuego.setVisible(true);
         }

@@ -105,6 +105,7 @@ public class Personaje extends javax.swing.JPanel {
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        this.remove(this);
         panelGameOver.activo = nodo;
         panelGameOver.setVisible(true);
     }//GEN-LAST:event_btnNoActionPerformed
@@ -124,7 +125,8 @@ public class Personaje extends javax.swing.JPanel {
 
     private void btnVolverAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAJugarActionPerformed
         // TODO add your handling code here:
-        
+        this.setVisible(false);
+        this.remove(this);
     }//GEN-LAST:event_btnVolverAJugarActionPerformed
 
    

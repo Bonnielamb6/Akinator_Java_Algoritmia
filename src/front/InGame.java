@@ -149,6 +149,7 @@ public class InGame extends javax.swing.JPanel {
         activo = datos.getRaiz();
         if(activo.getHijoIzquierdo()==null && activo.getHijoDerecho()==null){
             this.setVisible(false);
+            this.remove(this);
             panelAdivinado.nodo = activo;
             panelAdivinado.setVisible(true);
         }

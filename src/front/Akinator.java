@@ -123,9 +123,6 @@ public class Akinator extends javax.swing.JFrame {
         
         mostrarPanel(panelGameOver);
         mostrarPanel(panelAdivinado);
-
-        
-        
         panelBienvenida.setVisible(false);
         panelAdivinado.setVisible(false);
         panelGameOver.setVisible(false);
@@ -133,7 +130,7 @@ public class Akinator extends javax.swing.JFrame {
         btnJugar.setVisible(false);
     }//GEN-LAST:event_btnJugarActionPerformed
 
-    public void reiniciarPartida(){
+    public void iniciarPartida(){
         
     }
     /**

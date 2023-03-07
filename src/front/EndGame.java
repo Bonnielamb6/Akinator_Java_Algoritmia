@@ -42,14 +42,14 @@ public class EndGame extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtPersonaje = new javax.swing.JTextField();
         btnAgregarImagen = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblPregunta = new javax.swing.JLabel();
+        lblGenio = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
         setPreferredSize(new java.awt.Dimension(860, 460));
@@ -58,12 +58,12 @@ public class EndGame extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(11, 18, 98));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Descripcion del personaje:");
-        jLabel1.setToolTipText("");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 120, 500, 50);
+        lblDescripcion.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        lblDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        lblDescripcion.setText("Descripcion del personaje:");
+        lblDescripcion.setToolTipText("");
+        jPanel1.add(lblDescripcion);
+        lblDescripcion.setBounds(10, 120, 500, 50);
 
         txtDescripcion.setBackground(new java.awt.Color(91, 191, 255));
         txtDescripcion.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
@@ -102,18 +102,18 @@ public class EndGame extends javax.swing.JPanel {
         jPanel1.add(btnAceptar);
         btnAceptar.setBounds(210, 380, 110, 40);
 
-        jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("En quien estabas pensando?");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(8, 5, 500, 50);
+        lblPregunta.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        lblPregunta.setForeground(new java.awt.Color(255, 255, 255));
+        lblPregunta.setText("En quien estabas pensando?");
+        jPanel1.add(lblPregunta);
+        lblPregunta.setBounds(8, 5, 500, 50);
 
         add(jPanel1);
         jPanel1.setBounds(340, 10, 520, 440);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
-        add(jLabel4);
-        jLabel4.setBounds(0, 80, 350, 300);
+        lblGenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
+        add(lblGenio);
+        lblGenio.setBounds(0, 80, 350, 300);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -134,11 +134,11 @@ public class EndGame extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregarImagen;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblGenio;
+    private javax.swing.JLabel lblPregunta;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtPersonaje;
     // End of variables declaration//GEN-END:variables
