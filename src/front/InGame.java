@@ -2,12 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Front;
+package front;
 
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import back.Arbol;
+import back.NodoArbol;
 
 /**
  *
@@ -18,10 +20,25 @@ public class InGame extends javax.swing.JPanel {
     /**
      * Creates new form InGame
      */
-    public InGame() {
+    Arbol datos = new Arbol();
+    NodoArbol activo = datos.getRaiz();
+    EndGame panelGameOver;
+    Personaje panelAdivinado;
+
+    public InGame(){
         initComponents();
-        
-        SetImageLabel(ImgAki,"/imagenes/genio.jpg");
+    }
+    
+    public InGame(Arbol datos,Personaje panelAdivinado, EndGame panelGameOver){
+        initComponents();
+        this.datos = datos;
+        activo = datos.getRaiz();
+        btnSi.setVisible(false);
+        btnNo.setVisible(false);
+        lblPersonaje.setVisible(false);
+        lblPersonaje.setVisible(false);
+        this.panelAdivinado = panelAdivinado;
+        this.panelGameOver = panelGameOver;
     }
 
     /**
@@ -33,69 +50,160 @@ public class InGame extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        ImgAki = new javax.swing.JLabel();
+        btnSi = new javax.swing.JButton();
+        btnNo = new javax.swing.JButton();
+        lblPersonaje = new javax.swing.JLabel();
+        lblPregunta = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnComenzar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(6, 118, 243));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         setLayout(null);
 
-        jButton3.setBackground(new java.awt.Color(91, 191, 255));
-        jButton3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton3.setText("Si");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSi.setBackground(new java.awt.Color(91, 191, 255));
+        btnSi.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnSi.setText("Si");
+        btnSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSiActionPerformed(evt);
             }
         });
-        add(jButton3);
-        jButton3.setBounds(440, 250, 110, 40);
+        add(btnSi);
+        btnSi.setBounds(440, 250, 110, 40);
 
-        jButton2.setBackground(new java.awt.Color(91, 191, 255));
-        jButton2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton2.setText("No");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnNo.setBackground(new java.awt.Color(91, 191, 255));
+        btnNo.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnNo.setText("No");
+        btnNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnNoActionPerformed(evt);
             }
         });
-        add(jButton2);
-        jButton2.setBounds(650, 250, 110, 40);
+        add(btnNo);
+        btnNo.setBounds(650, 250, 110, 40);
 
-        jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Tu personaje ");
-        add(jLabel3);
-        jLabel3.setBounds(350, 110, 500, 50);
+        lblPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        lblPersonaje.setForeground(new java.awt.Color(255, 255, 255));
+        lblPersonaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPersonaje.setText("Tu personaje ");
+        add(lblPersonaje);
+        lblPersonaje.setBounds(350, 110, 500, 50);
 
-        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
-        add(ImgAki);
-        ImgAki.setBounds(0, 60, 340, 330);
+        lblPregunta.setMaximumSize(new java.awt.Dimension(100, 100));
+        lblPregunta.setMinimumSize(new java.awt.Dimension(100, 100));
+        lblPregunta.setPreferredSize(new java.awt.Dimension(100, 100));
+        add(lblPregunta);
+        lblPregunta.setBounds(440, 180, 100, 100);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
+        add(jLabel2);
+        jLabel2.setBounds(0, 80, 350, 300);
+
+        btnComenzar.setBackground(new java.awt.Color(91, 191, 255));
+        btnComenzar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnComenzar.setText("Comenzar");
+        btnComenzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComenzarActionPerformed(evt);
+            }
+        });
+        add(btnComenzar);
+        btnComenzar.setBounds(510, 180, 160, 50);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        if(activo.getHijoDerecho()==null){
+            this.setVisible(false);
+            
+            panelAdivinado.nodo = activo;
+            panelAdivinado.setVisible(true);
+            this.finalizar();
+        }else{
+            activo = activo.avanzarDerecha(activo);
+            cambiarTexto();
+        }
+    }//GEN-LAST:event_btnSiActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void SetImageLabel(JLabel labelName, String root) {
-        ImageIcon image = new ImageIcon(root);
-        Icon icon = new ImageIcon (
-                image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT)
-        );
-        labelName.setIcon(icon);
-        this.repaint();
+        if(activo.getHijoIzquierdo()==null){
+            this.setVisible(false);
+            
+            panelAdivinado.nodo = activo;
+            panelAdivinado.setVisible(true);
+            this.finalizar();
+            
+        }else{
+            activo = activo.avanzarIzquierda(activo);
+            cambiarTexto();
+        }
     }
     
+    public void insertarPrimerTexto(){
+        
+    }
+    
+    public void cambiarTexto(){
+        if(activo!=null){
+            lblPregunta.setText("Es: "+activo.getTexto());
+            lblPregunta.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_btnNoActionPerformed
+
+    private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
+        // TODO add your handling code here:
+        comenzar();
+        if(activo.getHijoIzquierdo()==null && activo.getHijoDerecho()==null){
+            this.setVisible(false);
+            
+            panelAdivinado.nodo = activo;
+            panelAdivinado.setVisible(true);
+            this.finalizar();
+        }else{
+            cambiarTexto();
+        }
+        
+        
+    }//GEN-LAST:event_btnComenzarActionPerformed
+
+    private void comenzar(){
+        lblPersonaje.setVisible(true);
+        lblPregunta.setVisible(true);
+        btnNo.setVisible(true);
+        btnSi.setVisible(true);
+        btnComenzar.setVisible(false);
+        activo = datos.getRaiz();
+    }
+    
+    private void finalizar(){
+        lblPersonaje.setVisible(false);
+        lblPregunta.setVisible(false);
+        btnNo.setVisible(false);
+        btnSi.setVisible(false);
+        btnComenzar.setVisible(true);
+        activo = datos.getRaiz();
+        lblPersonaje.setVisible(false);
+    }
+    
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+       activo = datos.getRaiz();
+    }//GEN-LAST:event_formComponentShown
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ImgAki;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnComenzar;
+    private javax.swing.JButton btnNo;
+    private javax.swing.JButton btnSi;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblPersonaje;
+    private javax.swing.JLabel lblPregunta;
     // End of variables declaration//GEN-END:variables
 }

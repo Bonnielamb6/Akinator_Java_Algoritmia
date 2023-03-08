@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Front;
+package front;
 
+import back.Arbol;
+import back.NodoArbol;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -18,10 +22,26 @@ public class MainQuest extends javax.swing.JPanel {
     /**
      * Creates new form MainQuest
      */
+    Arbol datos = new Arbol();
+    EndGame panelGameOver = new EndGame(datos, datos.getRaiz());
+    Personaje panelAdivinado;
+    InGame panelJuego;
+    
     public MainQuest() {
         initComponents();
         
-        SetImageLabel(ImgAki,"src/img/Akinator.jpg");
+        
+    }
+        public MainQuest(InGame panelJuego) {
+        initComponents();
+        
+        this.panelJuego = panelJuego;
+    }
+    
+    public MainQuest(Arbol datos,InGame panelJuego){
+        initComponents();
+        this.datos = datos;
+        this.panelJuego = panelJuego;
     }
 
     /**
@@ -33,106 +53,86 @@ public class MainQuest extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImgAki = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtPersonaje = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
         setLayout(null);
 
-        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
-        add(ImgAki);
-        ImgAki.setBounds(0, 60, 340, 330);
-
         jPanel2.setBackground(new java.awt.Color(11, 18, 98));
         jPanel2.setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Descripcion del personaje:");
-        jLabel1.setToolTipText("");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 120, 500, 50);
-
-        jTextField1.setBackground(new java.awt.Color(91, 191, 255));
-        jTextField1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(10, 170, 500, 50);
 
         jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jLabel2);
         jLabel2.setBounds(190, 250, 310, 50);
 
-        jTextField2.setBackground(new java.awt.Color(91, 191, 255));
-        jTextField2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField2);
-        jTextField2.setBounds(10, 60, 500, 50);
+        txtPersonaje.setBackground(new java.awt.Color(91, 191, 255));
+        txtPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        jPanel2.add(txtPersonaje);
+        txtPersonaje.setBounds(10, 150, 500, 50);
 
         jButton1.setBackground(new java.awt.Color(91, 191, 255));
         jButton1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jButton1.setText("Añadir Imagen");
         jPanel2.add(jButton1);
-        jButton1.setBounds(10, 250, 170, 50);
+        jButton1.setBounds(180, 240, 170, 50);
 
-        jButton2.setBackground(new java.awt.Color(91, 191, 255));
-        jButton2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton2.setText("Aceptar");
-        jPanel2.add(jButton2);
-        jButton2.setBounds(210, 380, 110, 40);
+        btnAceptar.setBackground(new java.awt.Color(91, 191, 255));
+        btnAceptar.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAceptar);
+        btnAceptar.setBounds(210, 380, 110, 40);
 
         jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("En quien estas pensando?");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(8, 5, 500, 50);
+        jLabel3.setBounds(140, 70, 240, 50);
 
         add(jPanel2);
         jPanel2.setBounds(340, 10, 520, 440);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
+        add(jLabel4);
+        jLabel4.setBounds(0, 80, 350, 300);
     }// </editor-fold>//GEN-END:initComponents
   
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        if(txtPersonaje.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
+        }else{
+            NodoArbol raiz = new NodoArbol(txtPersonaje.getText());
+            datos.setRaiz(raiz);
+            this.setVisible(false);
+            this.remove(this);
+            panelJuego.datos = datos;
+            panelJuego.setVisible(true);
+        }
+        
+        
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void SetImageLabel(JLabel labelName, String root) {
-        ImageIcon image = new ImageIcon(root);
-        Icon icon = new ImageIcon (
-                image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT)
-        );
-        labelName.setIcon(icon);
-        this.repaint();
-    }    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ImgAki;
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtPersonaje;
     // End of variables declaration//GEN-END:variables
 }
