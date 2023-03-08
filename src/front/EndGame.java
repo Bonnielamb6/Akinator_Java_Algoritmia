@@ -55,6 +55,11 @@ public class EndGame extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(6, 118, 243));
         setPreferredSize(new java.awt.Dimension(860, 460));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(11, 18, 98));
@@ -148,7 +153,20 @@ public class EndGame extends javax.swing.JPanel {
         btnAgregarImagen.setVisible(false);
         btnAceptar.setVisible(false);
         btnVolverAJugar.setVisible(true);
+        txtDescripcion.setText("");
+        txtPersonaje.setText("");
     }
+    
+    private void mostrarCajas(){
+        txtDescripcion.setVisible(true);
+        txtPersonaje.setVisible(true);
+        lblDescripcion.setVisible(true);
+        lblPregunta.setVisible(true);
+        btnAgregarImagen.setVisible(true);
+        btnAceptar.setVisible(true);
+        btnVolverAJugar.setVisible(false);
+    }
+    
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
@@ -163,6 +181,11 @@ public class EndGame extends javax.swing.JPanel {
         
         btnVolverAJugar.setVisible(false);
     }//GEN-LAST:event_btnVolverAJugarActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        mostrarCajas();
+    }//GEN-LAST:event_formComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

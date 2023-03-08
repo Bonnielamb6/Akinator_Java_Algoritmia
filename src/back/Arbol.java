@@ -62,8 +62,8 @@ public class Arbol {
         NodoArbol nodoDer = new NodoArbol(personaje); // Nuevo Personaje
         activo.setTexto(caracteristica); // Caracteristica del personaje
 
-        activo.setHijoIzquierdo(nodoDer);
-        activo.setHijoDerecho(nodoIzq);
+        activo.setHijoIzquierdo(nodoIzq);
+        activo.setHijoDerecho(nodoDer);
     }
     
     
