@@ -62,7 +62,7 @@ public class Personaje extends javax.swing.JPanel {
         btnNo = new javax.swing.JButton();
         btnSi = new javax.swing.JButton();
         lblPersonaje = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        ImgWIn = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnVolverAJugar = new javax.swing.JButton();
 
@@ -102,8 +102,8 @@ public class Personaje extends javax.swing.JPanel {
         lblPersonaje.setText("Tu personaje es:");
         add(lblPersonaje);
         lblPersonaje.setBounds(350, 110, 500, 50);
-        add(jLabel1);
-        jLabel1.setBounds(480, 160, 240, 200);
+        add(ImgWIn);
+        ImgWIn.setBounds(480, 160, 240, 200);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(jLabel2);
@@ -121,6 +121,15 @@ public class Personaje extends javax.swing.JPanel {
         btnVolverAJugar.setBounds(480, 380, 200, 60);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SetImageLabel(JLabel labelName, String root){
+        ImageIcon image = new ImageIcon(root);
+        Icon icon = new ImageIcon(
+                image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT)
+        );
+        labelName.setIcon(icon);
+        this.repaint();
+    }
+    
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -141,6 +150,7 @@ public class Personaje extends javax.swing.JPanel {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         lblPersonaje.setText("Tu personaje es: "+ nodo.getTexto());
+        SetImageLabel(ImgWIn, nodo.getImg());
     }//GEN-LAST:event_formComponentShown
 
     private void btnVolverAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAJugarActionPerformed
@@ -159,10 +169,10 @@ public class Personaje extends javax.swing.JPanel {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ImgWIn;
     private javax.swing.JButton btnNo;
     private javax.swing.JButton btnSi;
     private javax.swing.JButton btnVolverAJugar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblPersonaje;
     // End of variables declaration//GEN-END:variables

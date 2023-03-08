@@ -12,6 +12,7 @@ public class NodoArbol {
     NodoArbol hijoDerecho;
     NodoArbol hijoIzquierdo;
     String texto;
+    String img;
     int profundidad;
     
     public NodoArbol(){
@@ -26,6 +27,11 @@ public class NodoArbol {
         this.profundidad=0;
         this.hijoIzquierdo = null;
         this.hijoDerecho = null;
+    }
+    
+    public NodoArbol(String texto, String img){
+        this.texto = texto;
+        this.img = img;
     }
     
     public NodoArbol(String caracteristica,NodoArbol hijoDerecho){
@@ -57,6 +63,14 @@ public class NodoArbol {
 
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+    
+    public String getImg() {
+        return img;
+    }
+    
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public int getProfundidad() {

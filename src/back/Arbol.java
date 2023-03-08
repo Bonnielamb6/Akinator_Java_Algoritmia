@@ -56,11 +56,12 @@ public class Arbol {
         return temporal;
     }
     
-    public void insertarNuevoPersonaje(String caracteristica, String personaje,NodoArbol activo){
+    public void insertarNuevoPersonaje(String caracteristica, String personaje, String img,NodoArbol activo){
         String personajeActual = (String) activo.getTexto();
         NodoArbol nodoIzq = new NodoArbol(personajeActual); // Personaje actual
         NodoArbol nodoDer = new NodoArbol(personaje); // Nuevo Personaje
         activo.setTexto(caracteristica); // Caracteristica del personaje
+        activo.setImg(img); //Agregar ruta de la imagen
 
         activo.setHijoIzquierdo(nodoIzq);
         activo.setHijoDerecho(nodoDer);

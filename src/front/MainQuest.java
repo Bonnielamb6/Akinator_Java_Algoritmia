@@ -7,8 +7,10 @@ package front;
 import back.Arbol;
 import back.NodoArbol;
 import java.awt.Image;
+import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -54,7 +56,7 @@ public class MainQuest extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        dirImagen = new javax.swing.JLabel();
         txtPersonaje = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
@@ -67,10 +69,10 @@ public class MainQuest extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(11, 18, 98));
         jPanel2.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(190, 250, 310, 50);
+        dirImagen.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        dirImagen.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(dirImagen);
+        dirImagen.setBounds(190, 250, 310, 50);
 
         txtPersonaje.setBackground(new java.awt.Color(91, 191, 255));
         txtPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
@@ -80,8 +82,13 @@ public class MainQuest extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(91, 191, 255));
         jButton1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jButton1.setText("Añadir Imagen");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
-        jButton1.setBounds(180, 240, 170, 50);
+        jButton1.setBounds(10, 250, 170, 50);
 
         btnAceptar.setBackground(new java.awt.Color(91, 191, 255));
         btnAceptar.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
@@ -113,7 +120,7 @@ public class MainQuest extends javax.swing.JPanel {
         if(txtPersonaje.getText().isBlank()){
             JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
         }else{
-            NodoArbol raiz = new NodoArbol(txtPersonaje.getText());
+            NodoArbol raiz = new NodoArbol(txtPersonaje.getText(), dirImagen.getText());
             datos.setRaiz(raiz);
             this.setVisible(false);
             this.remove(this);
@@ -124,12 +131,26 @@ public class MainQuest extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                JFileChooser fc = new JFileChooser();
+        
+        int seleccion = fc.showOpenDialog(this);
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            
+            File fichero = fc.getSelectedFile();
+            
+            this.dirImagen.setText(fichero.getAbsolutePath());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JLabel dirImagen;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;

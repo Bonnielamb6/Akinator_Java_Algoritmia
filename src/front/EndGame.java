@@ -7,8 +7,11 @@ package front;
 import back.Arbol;
 import back.NodoArbol;
 import java.awt.Image;
+import java.io.File;
+import java.io.FileReader;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -45,7 +48,7 @@ public class EndGame extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         lblDescripcion = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        dirImagen = new javax.swing.JLabel();
         txtPersonaje = new javax.swing.JTextField();
         btnAgregarImagen = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
@@ -72,10 +75,10 @@ public class EndGame extends javax.swing.JPanel {
         jPanel1.add(txtDescripcion);
         txtDescripcion.setBounds(10, 170, 500, 50);
 
-        jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(190, 250, 310, 50);
+        dirImagen.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        dirImagen.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(dirImagen);
+        dirImagen.setBounds(190, 250, 310, 50);
 
         txtPersonaje.setBackground(new java.awt.Color(91, 191, 255));
         txtPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
@@ -134,7 +137,7 @@ public class EndGame extends javax.swing.JPanel {
         if(txtDescripcion.getText().isBlank() ||txtPersonaje.getText().isBlank()){
             JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
         }else{
-            datos.insertarNuevoPersonaje(txtDescripcion.getText(), txtPersonaje.getText(), activo);
+            datos.insertarNuevoPersonaje(txtDescripcion.getText(), txtPersonaje.getText(), dirImagen.getText(), activo);
             esconderCajas();
         }
         
@@ -162,6 +165,16 @@ public class EndGame extends javax.swing.JPanel {
     
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser();
+        
+        int seleccion = fc.showOpenDialog(this);
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            
+            File fichero = fc.getSelectedFile();
+            
+            this.dirImagen.setText(fichero.getAbsolutePath());
+        }
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
 
     private void btnVolverAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAJugarActionPerformed
@@ -183,7 +196,7 @@ public class EndGame extends javax.swing.JPanel {
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregarImagen;
     private javax.swing.JButton btnVolverAJugar;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel dirImagen;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblGenio;
