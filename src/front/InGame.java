@@ -94,11 +94,13 @@ public class InGame extends javax.swing.JPanel {
         add(lblPersonaje);
         lblPersonaje.setBounds(350, 110, 500, 50);
 
+        lblPregunta.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        lblPregunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPregunta.setMaximumSize(new java.awt.Dimension(100, 100));
         lblPregunta.setMinimumSize(new java.awt.Dimension(100, 100));
         lblPregunta.setPreferredSize(new java.awt.Dimension(100, 100));
         add(lblPregunta);
-        lblPregunta.setBounds(440, 180, 100, 100);
+        lblPregunta.setBounds(370, 150, 470, 100);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(jLabel2);

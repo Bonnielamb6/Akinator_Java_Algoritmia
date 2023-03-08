@@ -140,7 +140,7 @@ public class Personaje extends javax.swing.JPanel {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        lblPersonaje.setText("Tu personaje es: "+nodo.getTexto());
+        lblPersonaje.setText("Tu personaje es: "+ nodo.getTexto());
     }//GEN-LAST:event_formComponentShown
 
     private void btnVolverAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAJugarActionPerformed

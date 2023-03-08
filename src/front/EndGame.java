@@ -149,6 +149,17 @@ public class EndGame extends javax.swing.JPanel {
         btnAceptar.setVisible(false);
         btnVolverAJugar.setVisible(true);
     }
+    
+    private void mostrarCajas(){
+        txtDescripcion.setVisible(true);
+        txtPersonaje.setVisible(true);
+        lblDescripcion.setVisible(true);
+        lblPregunta.setVisible(true);
+        btnAgregarImagen.setVisible(true);
+        btnAceptar.setVisible(true);
+        btnVolverAJugar.setVisible(false);
+    }
+    
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
@@ -162,6 +173,9 @@ public class EndGame extends javax.swing.JPanel {
         panelJuego.setVisible(true);
         
         btnVolverAJugar.setVisible(false);
+        mostrarCajas();
+        txtPersonaje.setText("");
+        txtDescripcion.setText("");
     }//GEN-LAST:event_btnVolverAJugarActionPerformed
 
 
