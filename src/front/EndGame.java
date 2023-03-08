@@ -23,13 +23,14 @@ public class EndGame extends javax.swing.JPanel {
      */
     Arbol datos = new Arbol();
     NodoArbol activo = new NodoArbol();
-   
+    InGame panelJuego;
     
     public EndGame(Arbol datos, NodoArbol activo){
         initComponents();
         this.datos = datos;
         this.activo = activo;
         this.setVisible(true);
+        btnVolverAJugar.setVisible(false);
     }
 
     /**
@@ -49,6 +50,7 @@ public class EndGame extends javax.swing.JPanel {
         btnAgregarImagen = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
         lblPregunta = new javax.swing.JLabel();
+        btnVolverAJugar = new javax.swing.JButton();
         lblGenio = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
@@ -108,6 +110,17 @@ public class EndGame extends javax.swing.JPanel {
         jPanel1.add(lblPregunta);
         lblPregunta.setBounds(8, 5, 500, 50);
 
+        btnVolverAJugar.setBackground(new java.awt.Color(91, 191, 255));
+        btnVolverAJugar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnVolverAJugar.setText("Volver a jugar");
+        btnVolverAJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverAJugarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolverAJugar);
+        btnVolverAJugar.setBounds(160, 330, 200, 60);
+
         add(jPanel1);
         jPanel1.setBounds(340, 10, 520, 440);
 
@@ -122,18 +135,40 @@ public class EndGame extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
         }else{
             datos.insertarNuevoPersonaje(txtDescripcion.getText(), txtPersonaje.getText(), activo);
+            esconderCajas();
         }
         
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
-
+    private void esconderCajas(){
+        txtDescripcion.setVisible(false);
+        txtPersonaje.setVisible(false);
+        lblDescripcion.setVisible(false);
+        lblPregunta.setVisible(false);
+        btnAgregarImagen.setVisible(false);
+        btnAceptar.setVisible(false);
+        btnVolverAJugar.setVisible(true);
+    }
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
+
+    private void btnVolverAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAJugarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        panelJuego.setVisible(true);
+        panelJuego.datos = datos;
+        panelJuego.activo = datos.getRaiz();
+        panelJuego.setVisible(true);
+        
+        btnVolverAJugar.setVisible(false);
+    }//GEN-LAST:event_btnVolverAJugarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregarImagen;
+    private javax.swing.JButton btnVolverAJugar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDescripcion;

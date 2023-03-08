@@ -119,7 +119,11 @@ public class InGame extends javax.swing.JPanel {
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
         if(activo.getHijoDerecho()==null){
-            //mandar a la ventana de adivinado el personaje
+            this.setVisible(false);
+            
+            panelAdivinado.nodo = activo;
+            panelAdivinado.setVisible(true);
+            this.finalizar();
         }else{
             activo = activo.avanzarDerecha(activo);
             cambiarTexto();
@@ -129,7 +133,12 @@ public class InGame extends javax.swing.JPanel {
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
         if(activo.getHijoIzquierdo()==null){
-            //mandar a la ventana de adivinado el personaje
+            this.setVisible(false);
+            
+            panelAdivinado.nodo = activo;
+            panelAdivinado.setVisible(true);
+            this.finalizar();
+            
         }else{
             activo = activo.avanzarIzquierda(activo);
             cambiarTexto();
@@ -180,7 +189,6 @@ public class InGame extends javax.swing.JPanel {
         btnSi.setVisible(false);
         btnComenzar.setVisible(true);
         activo = datos.getRaiz();
-        lblPersonaje.setText("");
         lblPersonaje.setVisible(false);
     }
     
