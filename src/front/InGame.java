@@ -98,7 +98,7 @@ public class InGame extends javax.swing.JPanel {
         lblPregunta.setMinimumSize(new java.awt.Dimension(100, 100));
         lblPregunta.setPreferredSize(new java.awt.Dimension(100, 100));
         add(lblPregunta);
-        lblPregunta.setBounds(440, 180, 100, 100);
+        lblPregunta.setBounds(440, 180, 350, 100);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(jLabel2);

@@ -140,6 +140,7 @@ public class EndGame extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
         }else{
             datos.insertarNuevoPersonaje(txtDescripcion.getText(), txtPersonaje.getText(), activo);
+            datos.setRaiz(datos.equilibrarArbol(datos.getRaiz()));
             esconderCajas();
         }
         
