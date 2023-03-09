@@ -4,6 +4,8 @@
  */
 package front;
 
+import back.NodoArbol;
+import back.Arbol;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -16,17 +18,24 @@ public class Akinator extends javax.swing.JFrame {
     /**
      * Creates new form Akinator
      */
+    Arbol datos = new Arbol();
+    NodoArbol activo = datos.getRaiz();
+    
+    Bienvenida panelBienvenida= new Bienvenida();
+    
+    
+    
+    
+    
     public Akinator() {
         initComponents();
-        Bienvenida p1= new Bienvenida();
-        mostrarPanel(p1);
+        mostrarPanel(panelBienvenida);
                 
     }
     
-    private void mostrarPanel(JPanel p){
+    public void mostrarPanel(JPanel p){
         p.setSize(860, 460);
         p.setLocation(0,0);
-        contenido.removeAll();
         contenido.add(p,BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
@@ -100,8 +109,46 @@ public class Akinator extends javax.swing.JFrame {
         /*
         Mostrar panel de juego
         */
+        EndGame panelGameOver = new EndGame (datos,activo);
+        
+        Personaje panelPersonaje = new Personaje(datos,activo,panelGameOver);
+        
+        InGame panelJuego = new InGame(datos,panelPersonaje,panelGameOver);
+        
+        Personaje panelAdivinado = new Personaje(datos,activo,panelGameOver,panelJuego);
+        panelAdivinado = panelPersonaje;
+        panelAdivinado.panelJuego = panelJuego;
+        MainQuest panelPreguntaInicial = new MainQuest(datos,panelJuego);
+        
+        panelGameOver.panelJuego = panelJuego;
+        
+        
+//        InGame panelJuego = new InGame(datos,panelPersonaje,panelGameOver);
+//        Personaje panelPersonaje = new Personaje(activo,panelGameOver,panelJuego);
+        
+        
+        
+        
+        
+        mostrarPanel(panelJuego);
+        
+        
+        mostrarPanel(panelPreguntaInicial);
+
+
+        
+        mostrarPanel(panelGameOver);
+        mostrarPanel(panelAdivinado);
+        panelBienvenida.setVisible(false);
+        panelAdivinado.setVisible(false);
+        panelGameOver.setVisible(false);
+        panelJuego.setVisible(false);
+        btnJugar.setVisible(false);
     }//GEN-LAST:event_btnJugarActionPerformed
 
+    public void iniciarPartida(){
+        
+    }
     /**
      * @param args the command line arguments
      */

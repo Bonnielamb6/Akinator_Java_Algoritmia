@@ -2,12 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Front;
+package front;
 
+import back.Arbol;
+import back.NodoArbol;
 import java.awt.Image;
+import java.io.File;
+import java.io.FileReader;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,10 +24,16 @@ public class EndGame extends javax.swing.JPanel {
     /**
      * Creates new form EndGame
      */
-    public EndGame() {
+    Arbol datos = new Arbol();
+    NodoArbol activo = new NodoArbol();
+    InGame panelJuego;
+    
+    public EndGame(Arbol datos, NodoArbol activo){
         initComponents();
-        
-        SetImageLabel(ImgAki,"/imagenes/genio.jpg");
+        this.datos = datos;
+        this.activo = activo;
+        this.setVisible(true);
+        btnVolverAJugar.setVisible(false);
     }
 
     /**
@@ -33,107 +45,167 @@ public class EndGame extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImgAki = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
+        txtDescripcion = new javax.swing.JTextField();
+        dirImagen = new javax.swing.JLabel();
+        txtPersonaje = new javax.swing.JTextField();
+        btnAgregarImagen = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
+        lblPregunta = new javax.swing.JLabel();
+        btnVolverAJugar = new javax.swing.JButton();
+        lblGenio = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
         setPreferredSize(new java.awt.Dimension(860, 460));
         setLayout(null);
 
-        ImgAki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
-        add(ImgAki);
-        ImgAki.setBounds(0, 60, 340, 330);
-
         jPanel1.setBackground(new java.awt.Color(11, 18, 98));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Descripcion del personaje:");
-        jLabel1.setToolTipText("");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 120, 500, 50);
+        lblDescripcion.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        lblDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        lblDescripcion.setText("Descripcion del personaje:");
+        lblDescripcion.setToolTipText("");
+        jPanel1.add(lblDescripcion);
+        lblDescripcion.setBounds(10, 120, 500, 50);
 
-        jTextField1.setBackground(new java.awt.Color(91, 191, 255));
-        jTextField1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtDescripcion.setBackground(new java.awt.Color(91, 191, 255));
+        txtDescripcion.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        jPanel1.add(txtDescripcion);
+        txtDescripcion.setBounds(10, 170, 500, 50);
+
+        dirImagen.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        dirImagen.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(dirImagen);
+        dirImagen.setBounds(190, 250, 310, 50);
+
+        txtPersonaje.setBackground(new java.awt.Color(91, 191, 255));
+        txtPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        jPanel1.add(txtPersonaje);
+        txtPersonaje.setBounds(10, 60, 500, 50);
+
+        btnAgregarImagen.setBackground(new java.awt.Color(91, 191, 255));
+        btnAgregarImagen.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnAgregarImagen.setText("Añadir Imagen");
+        btnAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                btnAgregarImagenActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(10, 170, 500, 50);
+        jPanel1.add(btnAgregarImagen);
+        btnAgregarImagen.setBounds(10, 250, 170, 50);
 
-        jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(190, 250, 310, 50);
-
-        jTextField2.setBackground(new java.awt.Color(91, 191, 255));
-        jTextField2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptar.setBackground(new java.awt.Color(91, 191, 255));
+        btnAceptar.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                btnAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(10, 60, 500, 50);
+        jPanel1.add(btnAceptar);
+        btnAceptar.setBounds(210, 380, 110, 40);
 
-        jButton1.setBackground(new java.awt.Color(91, 191, 255));
-        jButton1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton1.setText("Añadir Imagen");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(10, 250, 170, 50);
+        lblPregunta.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        lblPregunta.setForeground(new java.awt.Color(255, 255, 255));
+        lblPregunta.setText("En quien estabas pensando?");
+        jPanel1.add(lblPregunta);
+        lblPregunta.setBounds(8, 5, 500, 50);
 
-        jButton2.setBackground(new java.awt.Color(91, 191, 255));
-        jButton2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jButton2.setText("Aceptar");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(210, 380, 110, 40);
-
-        jLabel3.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("En quien estabas pensando?");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(8, 5, 500, 50);
+        btnVolverAJugar.setBackground(new java.awt.Color(91, 191, 255));
+        btnVolverAJugar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnVolverAJugar.setText("Volver a jugar");
+        btnVolverAJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverAJugarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolverAJugar);
+        btnVolverAJugar.setBounds(160, 330, 200, 60);
 
         add(jPanel1);
         jPanel1.setBounds(340, 10, 520, 440);
+
+        lblGenio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
+        add(lblGenio);
+        lblGenio.setBounds(0, 80, 350, 300);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void SetImageLabel(JLabel labelName, String root) {
-        ImageIcon image = new ImageIcon(root);
-        Icon icon = new ImageIcon (
-                image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT)
-        );
-        labelName.setIcon(icon);
-        this.repaint();
+        if(txtDescripcion.getText().isBlank() || txtPersonaje.getText().isBlank() || dirImagen.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
+        }else{
+            datos.insertarNuevoPersonaje(txtDescripcion.getText(), txtPersonaje.getText(), dirImagen.getText(), activo);
+            datos.setRaiz(datos.equilibrarArbol(datos.getRaiz()));
+            esconderCajas();
+        }
+        
+        
+    }//GEN-LAST:event_btnAceptarActionPerformed
+    private void esconderCajas(){
+        txtDescripcion.setVisible(false);
+        txtPersonaje.setVisible(false);
+        lblDescripcion.setVisible(false);
+        lblPregunta.setVisible(false);
+        btnAgregarImagen.setVisible(false);
+        btnAceptar.setVisible(false);
+        btnVolverAJugar.setVisible(true);
+        dirImagen.setVisible(false);
     }
+    
+    private void mostrarCajas(){
+        txtDescripcion.setVisible(true);
+        txtPersonaje.setVisible(true);
+        lblDescripcion.setVisible(true);
+        lblPregunta.setVisible(true);
+        btnAgregarImagen.setVisible(true);
+        btnAceptar.setVisible(true);
+        btnVolverAJugar.setVisible(false);
+        dirImagen.setVisible(true);
+    }
+    
+    private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser();
+        
+        int seleccion = fc.showOpenDialog(this);
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            
+            File fichero = fc.getSelectedFile();
+            
+            this.dirImagen.setText(fichero.getAbsolutePath());
+        }
+    }//GEN-LAST:event_btnAgregarImagenActionPerformed
+
+    private void btnVolverAJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAJugarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        panelJuego.setVisible(true);
+        panelJuego.datos = datos;
+        panelJuego.activo = datos.getRaiz();
+        panelJuego.setVisible(true);
+        
+        btnVolverAJugar.setVisible(false);
+        mostrarCajas();
+        txtPersonaje.setText("");
+        txtDescripcion.setText("");
+        dirImagen.setText("");
+    }//GEN-LAST:event_btnVolverAJugarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ImgAki;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAgregarImagen;
+    private javax.swing.JButton btnVolverAJugar;
+    private javax.swing.JLabel dirImagen;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblGenio;
+    private javax.swing.JLabel lblPregunta;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtPersonaje;
     // End of variables declaration//GEN-END:variables
 }
