@@ -120,10 +120,10 @@ public class InGame extends javax.swing.JPanel {
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
-        if(activo.getHijoDerecho()==null){
+        if(activo.getHijoDerecho().getHijoDerecho()==null){
             this.setVisible(false);
             
-            panelAdivinado.nodo = activo;
+            panelAdivinado.nodo = activo.avanzarDerecha(activo);
             panelAdivinado.setVisible(true);
             this.finalizar();
         }else{
@@ -134,10 +134,10 @@ public class InGame extends javax.swing.JPanel {
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
-        if(activo.getHijoIzquierdo()==null){
+        if(activo.getHijoIzquierdo().getHijoIzquierdo()==null){
             this.setVisible(false);
             
-            panelAdivinado.nodo = activo;
+            panelAdivinado.nodo = activo.avanzarIzquierda(activo);
             panelAdivinado.setVisible(true);
             this.finalizar();
             

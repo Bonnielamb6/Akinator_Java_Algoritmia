@@ -10,52 +10,7 @@ package back;
  */
 public class Arbol {
     private NodoArbol raiz;
-    
-    public Arbol(){
-        raiz = null;
-    }
-    
-    //Obtener profundidad
-    public int obtenerProfundidad(NodoArbol x){
-        if(x==null){
-            return -1;
-        }else{
-             return x.profundidad;
-        }
-    }
-    
-    public NodoArbol rotacionIzquierda(NodoArbol x){
-        NodoArbol auxiliar = x.hijoIzquierdo;
-        x.hijoIzquierdo = auxiliar.hijoDerecho;
-        auxiliar.hijoDerecho = x;
-        x.profundidad = Math.max(obtenerProfundidad(x.hijoIzquierdo),obtenerProfundidad(x.hijoDerecho)+1 );
-        auxiliar.profundidad = Math.max(obtenerProfundidad(auxiliar.hijoIzquierdo),obtenerProfundidad(auxiliar.hijoDerecho)+1 );
-        return auxiliar;
-    }
-    
-    public NodoArbol rotacionDerecha(NodoArbol x){
-        NodoArbol auxiliar = x.hijoDerecho;
-        x.hijoDerecho = auxiliar.hijoIzquierdo;
-        auxiliar.hijoIzquierdo = x;
-        x.profundidad = Math.max(obtenerProfundidad(x.hijoIzquierdo),obtenerProfundidad(x.hijoDerecho)+1 );
-        auxiliar.profundidad = Math.max(obtenerProfundidad(auxiliar.hijoIzquierdo),obtenerProfundidad(auxiliar.hijoDerecho)+1 );
-        return auxiliar;
-    }
-    
-    public NodoArbol rotacionDobleIzquierda(NodoArbol x){
-        NodoArbol temporal;
-        x.hijoIzquierdo = rotacionDerecha(x.hijoIzquierdo);
-        temporal = rotacionIzquierda(x);
-        return temporal;
-    }
-    
-    public NodoArbol rotacionDobleDerecha(NodoArbol x){
-        NodoArbol temporal;
-        x.hijoDerecho = rotacionIzquierda(x.hijoDerecho);
-        temporal = rotacionDerecha(x);
-        return temporal;
-    }
-    
+  
     public void insertarNuevoPersonaje(String caracteristica, String personaje, String imagen ,NodoArbol activo){
         String personajeActual = (String) activo.getTexto();
         String imagenActual = (String) activo.getImg();
@@ -69,23 +24,74 @@ public class Arbol {
         nodoDer.setImg(imagen);
     }
     
-    
-    public void calcularProfundidad(NodoArbol nuevo, NodoArbol subArbol){
-        if(subArbol.hijoIzquierdo==null && subArbol.hijoDerecho!= null){
-            subArbol.profundidad = subArbol.hijoDerecho.profundidad+1;
-        }else if(subArbol.hijoDerecho==null && subArbol.hijoIzquierdo!=null){
-            subArbol.profundidad = subArbol.hijoIzquierdo.profundidad+1;
-        }else {
-            subArbol.profundidad = Math.max(obtenerProfundidad(subArbol.hijoIzquierdo), obtenerProfundidad(subArbol.hijoDerecho)+1);
-        }    
+    public NodoArbol getRaiz() {
+        return raiz;
     }
 
     public void setRaiz(NodoArbol raiz) {
         this.raiz = raiz;
     }
     
-    public NodoArbol getRaiz(){
-        return raiz;
+    
+    public NodoArbol equilibrarArbol(NodoArbol activo){
+        if (activo == null){
+            return null;
+        }else{
+
+            int factorBalance = calcularFactorBalance(activo);
+
+            if (factorBalance > 1){
+
+                if (calcularFactorBalance(activo.getHijoIzquierdo()) < 0){
+                    activo.hijoIzquierdo = rotarIzquierda(activo.hijoIzquierdo);
+                }
+                activo = rotarDerecha(activo);
+
+            } else if (factorBalance < -1){
+
+                if (calcularFactorBalance(activo.hijoDerecho) > 0){
+                    activo.hijoDerecho = rotarDerecha(activo.hijoDerecho);
+                }
+                activo = rotarIzquierda(activo);
+
+            }
+
+            activo.hijoIzquierdo = equilibrarArbol(activo.hijoIzquierdo);
+            activo.hijoDerecho = equilibrarArbol(activo.hijoDerecho);
+
+            return activo;
+        }
+    }
+
+    private int calcularAltura(NodoArbol activo){
+        if (activo == null){
+            return 0;
+        }else{
+            return  Math.max(calcularAltura(activo.hijoIzquierdo), calcularAltura(activo.hijoDerecho))+1 ;
+        }
+        
+    }
+
+    private int calcularFactorBalance(NodoArbol activo){
+        if (activo == null){
+            return 0;
+        }
+
+        return calcularAltura(activo.hijoIzquierdo) - calcularAltura(activo.hijoDerecho);
+    }
+
+    private NodoArbol rotarIzquierda(NodoArbol activo){
+        NodoArbol nuevoNodoArbolActual = activo.hijoDerecho;
+        activo.hijoDerecho = nuevoNodoArbolActual.hijoIzquierdo;
+        nuevoNodoArbolActual.hijoIzquierdo = activo;
+        return nuevoNodoArbolActual;
+    }
+
+    private NodoArbol rotarDerecha(NodoArbol activo) {
+        NodoArbol nuevoNodoArbolActual = activo.hijoIzquierdo;
+        activo.hijoIzquierdo = nuevoNodoArbolActual.hijoDerecho;
+        nuevoNodoArbolActual.hijoDerecho = activo;
+        return nuevoNodoArbolActual;
     }
     
     

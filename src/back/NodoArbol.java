@@ -13,18 +13,18 @@ public class NodoArbol {
     NodoArbol hijoIzquierdo;
     String texto;
     String img;
-    int profundidad;
+    int factorEquilibrio;
     
     public NodoArbol(){
         this.texto = "";
-        this.profundidad=0;
+        this.factorEquilibrio=0;
         this.hijoIzquierdo = null;
         this.hijoDerecho = null;
     }
     
     public NodoArbol(String texto){
         this.texto = texto;
-        this.profundidad=0;
+        this.factorEquilibrio=0;
         this.hijoIzquierdo = null;
         this.hijoDerecho = null;
     }
@@ -36,7 +36,7 @@ public class NodoArbol {
     
     public NodoArbol(String caracteristica,NodoArbol hijoDerecho){
         this.texto = caracteristica;
-        this.profundidad=0;
+        this.factorEquilibrio=0;
         this.hijoIzquierdo = null;
         this.hijoDerecho = hijoDerecho;
     }
@@ -74,11 +74,11 @@ public class NodoArbol {
     }
 
     public int getProfundidad() {
-        return profundidad;
+        return factorEquilibrio;
     }
 
     public void setProfundidad(int profundidad) {
-        this.profundidad = profundidad;
+        this.factorEquilibrio = profundidad;
     }
     
     public NodoArbol avanzarDerecha(NodoArbol temporal){
