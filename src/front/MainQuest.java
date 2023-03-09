@@ -117,7 +117,7 @@ public class MainQuest extends javax.swing.JPanel {
   
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        if(txtPersonaje.getText().isBlank()){
+        if(txtPersonaje.getText().isBlank() || dirImagen.getText().isBlank()){
             JOptionPane.showMessageDialog(this, "No puede haber ningun dato vacio");
         }else{
             NodoArbol raiz = new NodoArbol(txtPersonaje.getText(), dirImagen.getText());
