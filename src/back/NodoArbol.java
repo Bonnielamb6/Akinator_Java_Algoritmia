@@ -1,17 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package back;
 
-/**
- *
- * @author PC
- */
+import javax.swing.ImageIcon;
+
 public class NodoArbol {
     NodoArbol hijoDerecho;
     NodoArbol hijoIzquierdo;
     String texto;
+    ImageIcon imgPersonaje;
     int profundidad;
     
     public NodoArbol(){
@@ -75,6 +71,14 @@ public class NodoArbol {
     public NodoArbol avanzarIzquierda(NodoArbol temporal){
         temporal = temporal.hijoIzquierdo;
         return temporal;
+    }
+
+    public ImageIcon getImgPersonaje() {
+        return imgPersonaje;
+    }
+
+    public void setImgPersonaje(ImageIcon imgPersonaje) {
+        this.imgPersonaje = imgPersonaje;
     }
     
 }

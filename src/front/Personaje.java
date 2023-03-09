@@ -1,37 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package front;
 
 
 import back.Arbol;
 import back.NodoArbol;
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
-/**
- *
- * @author cocol
- */
 public class Personaje extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Personaje
-     */
     Arbol datos = new Arbol();
     NodoArbol nodo = new NodoArbol();
     EndGame panelGameOver = new EndGame(datos, nodo);
     InGame panelJuego;
-    
-//    public Personaje(NodoArbol nodo, EndGame panelGameOver) {
-//        initComponents();
-//        this.nodo = nodo;
-//        this.panelGameOver = panelGameOver;
-//        btnVolverAJugar.setVisible(false);
-//    }
     
     public Personaje(Arbol datos,NodoArbol nodo, EndGame panelGameOver){
         initComponents();

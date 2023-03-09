@@ -4,10 +4,6 @@
  */
 package front;
 
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import back.Arbol;
 import back.NodoArbol;
 
@@ -25,11 +21,11 @@ public class InGame extends javax.swing.JPanel {
     EndGame panelGameOver;
     Personaje panelAdivinado;
 
-    public InGame(){
+    public InGame() {
         initComponents();
     }
-    
-    public InGame(Arbol datos,Personaje panelAdivinado, EndGame panelGameOver){
+
+    public InGame(Arbol datos, Personaje panelAdivinado, EndGame panelGameOver) {
         initComponents();
         this.datos = datos;
         activo = datos.getRaiz();
@@ -56,6 +52,7 @@ public class InGame extends javax.swing.JPanel {
         lblPregunta = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnComenzar = new javax.swing.JButton();
+        lblMostrarPersonaje = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -74,7 +71,7 @@ public class InGame extends javax.swing.JPanel {
             }
         });
         add(btnSi);
-        btnSi.setBounds(440, 250, 110, 40);
+        btnSi.setBounds(430, 380, 110, 40);
 
         btnNo.setBackground(new java.awt.Color(91, 191, 255));
         btnNo.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
@@ -85,20 +82,20 @@ public class InGame extends javax.swing.JPanel {
             }
         });
         add(btnNo);
-        btnNo.setBounds(650, 250, 110, 40);
+        btnNo.setBounds(690, 380, 110, 40);
 
         lblPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         lblPersonaje.setForeground(new java.awt.Color(255, 255, 255));
         lblPersonaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPersonaje.setText("Tu personaje ");
         add(lblPersonaje);
-        lblPersonaje.setBounds(350, 110, 500, 50);
+        lblPersonaje.setBounds(350, 100, 500, 50);
 
+        lblPregunta.setText("<html><html>");
         lblPregunta.setMaximumSize(new java.awt.Dimension(100, 100));
         lblPregunta.setMinimumSize(new java.awt.Dimension(100, 100));
-        lblPregunta.setPreferredSize(new java.awt.Dimension(100, 100));
         add(lblPregunta);
-        lblPregunta.setBounds(440, 180, 100, 100);
+        lblPregunta.setBounds(440, 320, 100, 50);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/genio.jpg"))); // NOI18N
         add(jLabel2);
@@ -113,18 +110,20 @@ public class InGame extends javax.swing.JPanel {
             }
         });
         add(btnComenzar);
-        btnComenzar.setBounds(510, 180, 160, 50);
+        btnComenzar.setBounds(520, 60, 160, 50);
+        add(lblMostrarPersonaje);
+        lblMostrarPersonaje.setBounds(520, 160, 160, 130);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         // TODO add your handling code here:
-        if(activo.getHijoDerecho().getHijoDerecho()==null){
+        if (activo.getHijoDerecho().getHijoDerecho() == null) {
             this.setVisible(false);
-            
+
             panelAdivinado.nodo = activo.avanzarDerecha(activo);
             panelAdivinado.setVisible(true);
             this.finalizar();
-        }else{
+        } else {
             activo = activo.avanzarDerecha(activo);
             cambiarTexto();
         }
@@ -132,48 +131,47 @@ public class InGame extends javax.swing.JPanel {
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
-        if(activo.getHijoIzquierdo().getHijoIzquierdo()==null){
+        if (activo.getHijoIzquierdo().getHijoIzquierdo() == null) {
             this.setVisible(false);
-            
+
             panelAdivinado.nodo = activo.avanzarIzquierda(activo);
             panelAdivinado.setVisible(true);
             this.finalizar();
-            
-        }else{
+
+        } else {
             activo = activo.avanzarIzquierda(activo);
             cambiarTexto();
         }
     }
-    
-    public void insertarPrimerTexto(){
-        
+
+    public void insertarPrimerTexto() {
+
     }
-    
-    public void cambiarTexto(){
-        if(activo!=null){
-            lblPregunta.setText(""+activo.getTexto());
+
+    public void cambiarTexto() {
+        if (activo != null) {
+            lblPregunta.setText("<html>" + activo.getTexto() + "<html>");
             lblPregunta.setVisible(true);
         }
-        
     }//GEN-LAST:event_btnNoActionPerformed
 
     private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
         // TODO add your handling code here:
         comenzar();
-        if(activo.getHijoIzquierdo()==null && activo.getHijoDerecho()==null){
+        if (activo.getHijoIzquierdo() == null && activo.getHijoDerecho() == null) {
             this.setVisible(false);
-            
+
             panelAdivinado.nodo = activo;
             panelAdivinado.setVisible(true);
             this.finalizar();
-        }else{
+        } else {
             cambiarTexto();
         }
-        
-        
+
+
     }//GEN-LAST:event_btnComenzarActionPerformed
 
-    private void comenzar(){
+    private void comenzar() {
         lblPersonaje.setVisible(true);
         lblPregunta.setVisible(true);
         btnNo.setVisible(true);
@@ -181,8 +179,8 @@ public class InGame extends javax.swing.JPanel {
         btnComenzar.setVisible(false);
         activo = datos.getRaiz();
     }
-    
-    private void finalizar(){
+
+    private void finalizar() {
         lblPersonaje.setVisible(false);
         lblPregunta.setVisible(false);
         btnNo.setVisible(false);
@@ -191,18 +189,19 @@ public class InGame extends javax.swing.JPanel {
         activo = datos.getRaiz();
         lblPersonaje.setVisible(false);
     }
-    
+
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-       activo = datos.getRaiz();
+        activo = datos.getRaiz();
     }//GEN-LAST:event_formComponentShown
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnComenzar;
     private javax.swing.JButton btnNo;
     private javax.swing.JButton btnSi;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblMostrarPersonaje;
     private javax.swing.JLabel lblPersonaje;
     private javax.swing.JLabel lblPregunta;
     // End of variables declaration//GEN-END:variables

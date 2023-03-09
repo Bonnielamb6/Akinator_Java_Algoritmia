@@ -1,27 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package front;
 
 import back.Arbol;
 import back.NodoArbol;
 import java.awt.Image;
-import javax.swing.Icon;
+import java.io.File;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-
-/**
- *
- * @author cocol
- */
 public class MainQuest extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MainQuest
-     */
     Arbol datos = new Arbol();
     EndGame panelGameOver = new EndGame(datos, datos.getRaiz());
     Personaje panelAdivinado;
@@ -59,6 +48,7 @@ public class MainQuest extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        lblImagenPersonaje = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(6, 118, 243));
@@ -70,7 +60,7 @@ public class MainQuest extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(190, 250, 310, 50);
+        jLabel2.setBounds(120, 310, 310, 50);
 
         txtPersonaje.setBackground(new java.awt.Color(91, 191, 255));
         txtPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
@@ -80,8 +70,13 @@ public class MainQuest extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(91, 191, 255));
         jButton1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
         jButton1.setText("Añadir Imagen");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
-        jButton1.setBounds(180, 240, 170, 50);
+        jButton1.setBounds(20, 230, 170, 50);
 
         btnAceptar.setBackground(new java.awt.Color(91, 191, 255));
         btnAceptar.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
@@ -99,6 +94,8 @@ public class MainQuest extends javax.swing.JPanel {
         jLabel3.setText("En quien estas pensando?");
         jPanel2.add(jLabel3);
         jLabel3.setBounds(140, 70, 240, 50);
+        jPanel2.add(lblImagenPersonaje);
+        lblImagenPersonaje.setBounds(280, 220, 220, 120);
 
         add(jPanel2);
         jPanel2.setBounds(340, 10, 520, 440);
@@ -124,6 +121,18 @@ public class MainQuest extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         JFileChooser explorador = new JFileChooser();
+        int result = explorador.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File imgSeleccionada = explorador.getSelectedFile();
+            ImageIcon imagenPersonaje = new ImageIcon(imgSeleccionada.getPath());
+            Image img = imagenPersonaje.getImage().getScaledInstance(lblImagenPersonaje.getWidth(),lblImagenPersonaje.getHeight(), Image.SCALE_SMOOTH);
+            imagenPersonaje = new ImageIcon(img);
+            lblImagenPersonaje.setIcon(imagenPersonaje);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -133,6 +142,7 @@ public class MainQuest extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblImagenPersonaje;
     private javax.swing.JTextField txtPersonaje;
     // End of variables declaration//GEN-END:variables
 }
