@@ -96,7 +96,7 @@ public class Personaje extends javax.swing.JPanel {
         add(btnSi);
         btnSi.setBounds(410, 390, 110, 40);
 
-        lblPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        lblPersonaje.setFont(new java.awt.Font("Viner Hand ITC", 1, 14)); // NOI18N
         lblPersonaje.setForeground(new java.awt.Color(255, 255, 255));
         lblPersonaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPersonaje.setText("Tu personaje es:");
