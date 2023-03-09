@@ -151,6 +151,7 @@ public class EndGame extends javax.swing.JPanel {
         btnAgregarImagen.setVisible(false);
         btnAceptar.setVisible(false);
         btnVolverAJugar.setVisible(true);
+        dirImagen.setVisible(false);
     }
     
     private void mostrarCajas(){
@@ -161,6 +162,7 @@ public class EndGame extends javax.swing.JPanel {
         btnAgregarImagen.setVisible(true);
         btnAceptar.setVisible(true);
         btnVolverAJugar.setVisible(false);
+        dirImagen.setVisible(true);
     }
     
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
@@ -189,6 +191,7 @@ public class EndGame extends javax.swing.JPanel {
         mostrarCajas();
         txtPersonaje.setText("");
         txtDescripcion.setText("");
+        dirImagen.setText("");
     }//GEN-LAST:event_btnVolverAJugarActionPerformed
 
 
